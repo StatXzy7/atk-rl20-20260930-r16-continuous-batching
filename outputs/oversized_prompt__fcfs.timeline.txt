@@ -1,0 +1,25 @@
+# 事件时间线（策略=fcfs）
+# 警告：以下均为模拟器*预测*时间线，非真实硬件 trace。
+# 配置: {'policy': 'fcfs', 'token_budget': 8, 'chunk_max': 8, 'page_size': 4, 'total_pages': 4, 'starvation_threshold': 8.0, 'min_protected_chunk': 2, 'decode_starvation_gap': 4, 'max_preemptions': 100000, 'cost_model': {'prefill_cost': 1.0, 'decode_cost': 1.0, 'throughput': 1.0, 'fixed_fee': 0.0}}
+
+== Step 时间线 ==
+step  0 t=   0.00->   8.00 dur=  8.00 P=8 D=0 页:0->3->(释放后)3 | OK1:prefill8[页3]
+step  1 t=   8.00->  12.00 dur=  4.00 P=4 D=0 页:3->3->(释放后)3 | OK1:prefill4[页3]
+step  2 t=  12.00->  13.00 dur=  1.00 P=0 D=1 页:3->4->(释放后)4 | OK1:decode->#1[页4]
+step  3 t=  13.00->  14.00 dur=  1.00 P=0 D=1 页:4->4->(释放后)0 | OK1:decode->#2[页4]*完成*
+step  4 t=  14.00->  22.00 dur=  8.00 P=8 D=0 页:0->2->(释放后)2 | OK2:prefill8[页2]
+step  5 t=  22.00->  23.00 dur=  1.00 P=0 D=1 页:2->3->(释放后)0 | OK2:decode->#1[页3]*完成*
+
+== 离散事件 ==
+{'event': 'arrival', 'time': 0.0, 'rid': 'OK1', 'prompt_len': 12}
+{'event': 'admit', 'time': 0.0, 'rid': 'OK1', 'policy': 'fcfs', 'pages': 3}
+{'event': 'reject', 'time': 8.0, 'rid': 'HUGE', 'reason': 'prompt 需要 5 页，超过总页数 4'}
+{'event': 'arrival', 'time': 8.0, 'rid': 'OK2', 'prompt_len': 8}
+{'event': 'complete', 'time': 14.0, 'rid': 'OK1', 'generated': 2, 'freed_pages': 4}
+{'event': 'admit', 'time': 14.0, 'rid': 'OK2', 'policy': 'fcfs', 'pages': 2}
+{'event': 'complete', 'time': 23.0, 'rid': 'OK2', 'generated': 1, 'freed_pages': 3}
+
+== 每请求指标 ==
+OK1 [COMPLETED] TTFT=13.0 完成延迟=14.0 ITL=[1.0] 抢占=0 重算token=0 decode=2 备注: 正常
+HUGE [REJECTED] TTFT=None 完成延迟=None ITL=[] 抢占=0 重算token=0 decode=0 备注: 未完成，ITL 不适用
+OK2 [COMPLETED] TTFT=21.0 完成延迟=21.0 ITL=[] 抢占=0 重算token=0 decode=1 备注: output_len=1：无相邻 token 对，ITL 序列为空；TTFT 即首 token（也是完成）时刻

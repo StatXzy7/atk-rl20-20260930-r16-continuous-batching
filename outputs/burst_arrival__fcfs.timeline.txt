@@ -1,0 +1,76 @@
+# 事件时间线（策略=fcfs）
+# 警告：以下均为模拟器*预测*时间线，非真实硬件 trace。
+# 配置: {'policy': 'fcfs', 'token_budget': 16, 'chunk_max': 8, 'page_size': 8, 'total_pages': 16, 'starvation_threshold': 10.0, 'min_protected_chunk': 4, 'decode_starvation_gap': 4, 'max_preemptions': 100000, 'cost_model': {'prefill_cost': 1.0, 'decode_cost': 1.0, 'throughput': 1.0, 'fixed_fee': 0.0}}
+
+== Step 时间线 ==
+step  0 t=   5.00->  21.00 dur= 16.00 P=16 D=0 页:0->15->(释放后)15 | B00:prefill4[页1]; B01:prefill8[页1]; B02:prefill4[页2]
+step  1 t=  21.00->  37.00 dur= 16.00 P=16 D=0 页:15->15->(释放后)15 | B02:prefill8[页2]; B03:prefill8[页2]
+step  2 t=  37.00->  53.00 dur= 16.00 P=16 D=0 页:15->15->(释放后)15 | B03:prefill8[页2]; B04:prefill8[页3]
+step  3 t=  53.00->  69.00 dur= 16.00 P=16 D=0 页:15->15->(释放后)15 | B04:prefill8[页3]; B05:prefill4[页1]; B06:prefill4[页1]
+step  4 t=  69.00->  85.00 dur= 16.00 P=16 D=0 页:15->15->(释放后)15 | B04:prefill4[页3]; B06:prefill4[页1]; B07:prefill8[页2]
+step  5 t=  85.00->  97.00 dur= 12.00 P=12 D=0 页:15->15->(释放后)15 | B07:prefill4[页2]; B08:prefill8[页2]
+step  6 t=  97.00-> 105.00 dur=  8.00 P=8 D=0 页:15->15->(释放后)15 | B08:prefill8[页2]
+step  7 t= 105.00-> 111.00 dur=  6.00 P=0 D=6 页:15->16->(释放后)15 | B00:decode->#1[页1]*完成*; B01:decode->#1[页2]; B02:decode->#1[页2]; B04:decode->#1[页3]; B05:decode->#1[页1]; B07:decode->#1[页2]
+step  8 t= 111.00-> 117.00 dur=  6.00 P=0 D=6 页:15->16->(释放后)6 | B02:decode->#2[页2]; B03:decode->#1[页3]*完成*; B04:decode->#2[页3]*完成*; B05:decode->#2[页1]; B07:decode->#2[页2]*完成*; B01:decode->#2[页2]*完成*
+step  9 t= 117.00-> 121.00 dur=  4.00 P=0 D=4 页:6->8->(释放后)3 | B06:decode->#1[页2]*完成*; B08:decode->#1[页3]; B02:decode->#3[页2]*完成*; B05:decode->#3[页1]*完成*
+step 10 t= 121.00-> 122.00 dur=  1.00 P=0 D=1 页:3->3->(释放后)3 | B08:decode->#2[页3]
+step 11 t= 122.00-> 123.00 dur=  1.00 P=0 D=1 页:3->3->(释放后)0 | B08:decode->#3[页3]*完成*
+step 12 t= 123.00-> 139.00 dur= 16.00 P=16 D=0 页:0->5->(释放后)5 | B09:prefill8[页3]; B10:prefill4[页1]; B11:prefill4[页1]
+step 13 t= 139.00-> 151.00 dur= 12.00 P=12 D=0 页:5->5->(释放后)5 | B09:prefill8[页3]; B11:prefill4[页1]
+step 14 t= 151.00-> 155.00 dur=  4.00 P=4 D=0 页:5->5->(释放后)5 | B09:prefill4[页3]
+step 15 t= 155.00-> 158.00 dur=  3.00 P=0 D=3 页:5->6->(释放后)3 | B09:decode->#1[页3]*完成*; B10:decode->#1[页1]; B11:decode->#1[页2]
+step 16 t= 158.00-> 160.00 dur=  2.00 P=0 D=2 页:3->3->(释放后)2 | B11:decode->#2[页2]; B10:decode->#2[页1]*完成*
+step 17 t= 160.00-> 161.00 dur=  1.00 P=0 D=1 页:2->2->(释放后)0 | B11:decode->#3[页2]*完成*
+
+== 离散事件 ==
+{'event': 'idle_advance', 'time': 0.0, 'next_time': 5}
+{'event': 'arrival', 'time': 5, 'rid': 'B00', 'prompt_len': 4}
+{'event': 'arrival', 'time': 5, 'rid': 'B01', 'prompt_len': 8}
+{'event': 'arrival', 'time': 5, 'rid': 'B02', 'prompt_len': 12}
+{'event': 'arrival', 'time': 5, 'rid': 'B03', 'prompt_len': 16}
+{'event': 'arrival', 'time': 5, 'rid': 'B04', 'prompt_len': 20}
+{'event': 'arrival', 'time': 5, 'rid': 'B05', 'prompt_len': 4}
+{'event': 'arrival', 'time': 5, 'rid': 'B06', 'prompt_len': 8}
+{'event': 'arrival', 'time': 5, 'rid': 'B07', 'prompt_len': 12}
+{'event': 'arrival', 'time': 5, 'rid': 'B08', 'prompt_len': 16}
+{'event': 'arrival', 'time': 5, 'rid': 'B09', 'prompt_len': 20}
+{'event': 'arrival', 'time': 5, 'rid': 'B10', 'prompt_len': 4}
+{'event': 'arrival', 'time': 5, 'rid': 'B11', 'prompt_len': 8}
+{'event': 'admit', 'time': 5, 'rid': 'B00', 'policy': 'fcfs', 'pages': 1}
+{'event': 'admit', 'time': 5, 'rid': 'B01', 'policy': 'fcfs', 'pages': 1}
+{'event': 'admit', 'time': 5, 'rid': 'B02', 'policy': 'fcfs', 'pages': 2}
+{'event': 'admit', 'time': 5, 'rid': 'B03', 'policy': 'fcfs', 'pages': 2}
+{'event': 'admit', 'time': 5, 'rid': 'B04', 'policy': 'fcfs', 'pages': 3}
+{'event': 'admit', 'time': 5, 'rid': 'B05', 'policy': 'fcfs', 'pages': 1}
+{'event': 'admit', 'time': 5, 'rid': 'B06', 'policy': 'fcfs', 'pages': 1}
+{'event': 'admit', 'time': 5, 'rid': 'B07', 'policy': 'fcfs', 'pages': 2}
+{'event': 'admit', 'time': 5, 'rid': 'B08', 'policy': 'fcfs', 'pages': 2}
+{'event': 'complete', 'time': 111.0, 'rid': 'B00', 'generated': 1, 'freed_pages': 1}
+{'event': 'complete', 'time': 117.0, 'rid': 'B01', 'generated': 2, 'freed_pages': 2}
+{'event': 'complete', 'time': 117.0, 'rid': 'B03', 'generated': 1, 'freed_pages': 3}
+{'event': 'complete', 'time': 117.0, 'rid': 'B04', 'generated': 2, 'freed_pages': 3}
+{'event': 'complete', 'time': 117.0, 'rid': 'B07', 'generated': 2, 'freed_pages': 2}
+{'event': 'complete', 'time': 121.0, 'rid': 'B02', 'generated': 3, 'freed_pages': 2}
+{'event': 'complete', 'time': 121.0, 'rid': 'B05', 'generated': 3, 'freed_pages': 1}
+{'event': 'complete', 'time': 121.0, 'rid': 'B06', 'generated': 1, 'freed_pages': 2}
+{'event': 'complete', 'time': 123.0, 'rid': 'B08', 'generated': 3, 'freed_pages': 3}
+{'event': 'admit', 'time': 123.0, 'rid': 'B09', 'policy': 'fcfs', 'pages': 3}
+{'event': 'admit', 'time': 123.0, 'rid': 'B10', 'policy': 'fcfs', 'pages': 1}
+{'event': 'admit', 'time': 123.0, 'rid': 'B11', 'policy': 'fcfs', 'pages': 1}
+{'event': 'complete', 'time': 158.0, 'rid': 'B09', 'generated': 1, 'freed_pages': 3}
+{'event': 'complete', 'time': 160.0, 'rid': 'B10', 'generated': 2, 'freed_pages': 1}
+{'event': 'complete', 'time': 161.0, 'rid': 'B11', 'generated': 3, 'freed_pages': 2}
+
+== 每请求指标 ==
+B00 [COMPLETED] TTFT=106.0 完成延迟=106.0 ITL=[] 抢占=0 重算token=0 decode=1 备注: output_len=1：无相邻 token 对，ITL 序列为空；TTFT 即首 token（也是完成）时刻
+B01 [COMPLETED] TTFT=106.0 完成延迟=112.0 ITL=[6.0] 抢占=0 重算token=0 decode=2 备注: 正常
+B02 [COMPLETED] TTFT=106.0 完成延迟=116.0 ITL=[6.0, 4.0] 抢占=0 重算token=0 decode=3 备注: 正常
+B03 [COMPLETED] TTFT=112.0 完成延迟=112.0 ITL=[] 抢占=0 重算token=0 decode=1 备注: output_len=1：无相邻 token 对，ITL 序列为空；TTFT 即首 token（也是完成）时刻
+B04 [COMPLETED] TTFT=106.0 完成延迟=112.0 ITL=[6.0] 抢占=0 重算token=0 decode=2 备注: 正常
+B05 [COMPLETED] TTFT=106.0 完成延迟=116.0 ITL=[6.0, 4.0] 抢占=0 重算token=0 decode=3 备注: 正常
+B06 [COMPLETED] TTFT=116.0 完成延迟=116.0 ITL=[] 抢占=0 重算token=0 decode=1 备注: output_len=1：无相邻 token 对，ITL 序列为空；TTFT 即首 token（也是完成）时刻
+B07 [COMPLETED] TTFT=106.0 完成延迟=112.0 ITL=[6.0] 抢占=0 重算token=0 decode=2 备注: 正常
+B08 [COMPLETED] TTFT=116.0 完成延迟=118.0 ITL=[1.0, 1.0] 抢占=0 重算token=0 decode=3 备注: 正常
+B09 [COMPLETED] TTFT=153.0 完成延迟=153.0 ITL=[] 抢占=0 重算token=0 decode=1 备注: output_len=1：无相邻 token 对，ITL 序列为空；TTFT 即首 token（也是完成）时刻
+B10 [COMPLETED] TTFT=153.0 完成延迟=155.0 ITL=[2.0] 抢占=0 重算token=0 decode=2 备注: 正常
+B11 [COMPLETED] TTFT=153.0 完成延迟=156.0 ITL=[2.0, 1.0] 抢占=0 重算token=0 decode=3 备注: 正常

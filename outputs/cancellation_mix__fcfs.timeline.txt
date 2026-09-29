@@ -1,0 +1,50 @@
+# 事件时间线（策略=fcfs）
+# 警告：以下均为模拟器*预测*时间线，非真实硬件 trace。
+# 配置: {'policy': 'fcfs', 'token_budget': 8, 'chunk_max': 4, 'page_size': 4, 'total_pages': 8, 'starvation_threshold': 8.0, 'min_protected_chunk': 2, 'decode_starvation_gap': 4, 'max_preemptions': 100000, 'cost_model': {'prefill_cost': 1.0, 'decode_cost': 1.0, 'throughput': 1.0, 'fixed_fee': 0.0}}
+
+== Step 时间线 ==
+step  0 t=   0.00->   4.00 dur=  4.00 P=4 D=0 页:0->4->(释放后)4 | K1:prefill4[页4]
+step  1 t=   4.00->   8.00 dur=  4.00 P=4 D=0 页:4->4->(释放后)4 | K1:prefill4[页4]
+step  2 t=   8.00->  12.00 dur=  4.00 P=4 D=0 页:4->4->(释放后)4 | K1:prefill4[页4]
+step  3 t=  12.00->  20.00 dur=  8.00 P=8 D=0 页:0->4->(释放后)4 | K2:prefill4[页2]; K4:prefill4[页2]
+step  4 t=  20.00->  28.00 dur=  8.00 P=8 D=0 页:4->4->(释放后)4 | K2:prefill4[页2]; K4:prefill4[页2]
+step  5 t=  28.00->  30.00 dur=  2.00 P=0 D=2 页:4->6->(释放后)6 | K2:decode->#1[页3]; K4:decode->#1[页3]
+step  6 t=  30.00->  32.00 dur=  2.00 P=0 D=2 页:6->6->(释放后)6 | K4:decode->#2[页3]; K2:decode->#2[页3]
+step  7 t=  32.00->  34.00 dur=  2.00 P=0 D=2 页:6->6->(释放后)6 | K2:decode->#3[页3]; K4:decode->#3[页3]
+step  8 t=  34.00->  36.00 dur=  2.00 P=0 D=2 页:6->6->(释放后)6 | K4:decode->#4[页3]; K2:decode->#4[页3]
+step  9 t=  36.00->  38.00 dur=  2.00 P=0 D=2 页:6->8->(释放后)4 | K2:decode->#5[页4]; K4:decode->#5[页4]*完成*
+step 10 t=  38.00->  39.00 dur=  1.00 P=0 D=1 页:4->4->(释放后)4 | K2:decode->#6[页4]
+step 11 t=  39.00->  40.00 dur=  1.00 P=0 D=1 页:4->4->(释放后)4 | K2:decode->#7[页4]
+step 12 t=  40.00->  41.00 dur=  1.00 P=0 D=1 页:4->4->(释放后)4 | K2:decode->#8[页4]
+step 13 t=  41.00->  42.00 dur=  1.00 P=0 D=1 页:4->5->(释放后)5 | K2:decode->#9[页5]
+step 14 t=  42.00->  43.00 dur=  1.00 P=0 D=1 页:5->5->(释放后)5 | K2:decode->#10[页5]
+step 15 t=  43.00->  44.00 dur=  1.00 P=0 D=1 页:5->5->(释放后)5 | K2:decode->#11[页5]
+step 16 t=  44.00->  45.00 dur=  1.00 P=0 D=1 页:5->5->(释放后)5 | K2:decode->#12[页5]
+step 17 t=  45.00->  46.00 dur=  1.00 P=0 D=1 页:5->6->(释放后)6 | K2:decode->#13[页6]
+step 18 t=  46.00->  47.00 dur=  1.00 P=0 D=1 页:6->6->(释放后)6 | K2:decode->#14[页6]
+step 19 t=  47.00->  48.00 dur=  1.00 P=0 D=1 页:6->6->(释放后)6 | K2:decode->#15[页6]
+step 20 t=  48.00->  49.00 dur=  1.00 P=0 D=1 页:6->6->(释放后)6 | K2:decode->#16[页6]
+step 21 t=  49.00->  50.00 dur=  1.00 P=0 D=1 页:6->7->(释放后)7 | K2:decode->#17[页7]
+step 22 t=  50.00->  51.00 dur=  1.00 P=0 D=1 页:7->7->(释放后)7 | K2:decode->#18[页7]
+step 23 t=  51.00->  52.00 dur=  1.00 P=0 D=1 页:7->7->(释放后)7 | K2:decode->#19[页7]
+step 24 t=  52.00->  53.00 dur=  1.00 P=0 D=1 页:7->7->(释放后)0 | K2:decode->#20[页7]*完成*
+
+== 离散事件 ==
+{'event': 'arrival', 'time': 0.0, 'rid': 'K1', 'prompt_len': 16}
+{'event': 'admit', 'time': 0.0, 'rid': 'K1', 'policy': 'fcfs', 'pages': 4}
+{'event': 'arrival', 'time': 4.0, 'rid': 'K2', 'prompt_len': 8}
+{'event': 'arrival', 'time': 4.0, 'rid': 'K3', 'prompt_len': 4}
+{'event': 'cancel', 'time': 4.0, 'rid': 'K3', 'freed_pages': 0}
+{'event': 'cancel_ignored', 'time': 4.0, 'rid': 'KX', 'reason': '未知请求'}
+{'event': 'arrival', 'time': 8.0, 'rid': 'K4', 'prompt_len': 8}
+{'event': 'cancel', 'time': 12.0, 'rid': 'K1', 'freed_pages': 4}
+{'event': 'admit', 'time': 12.0, 'rid': 'K2', 'policy': 'fcfs', 'pages': 2}
+{'event': 'admit', 'time': 12.0, 'rid': 'K4', 'policy': 'fcfs', 'pages': 2}
+{'event': 'complete', 'time': 38.0, 'rid': 'K4', 'generated': 5, 'freed_pages': 4}
+{'event': 'complete', 'time': 53.0, 'rid': 'K2', 'generated': 20, 'freed_pages': 7}
+
+== 每请求指标 ==
+K1 [CANCELLED] TTFT=None 完成延迟=12.0 ITL=[] 抢占=0 重算token=0 decode=0 备注: 未完成，ITL 不适用
+K2 [COMPLETED] TTFT=29.0 完成延迟=52.0 ITL=[2.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0] 抢占=0 重算token=0 decode=20 备注: 正常
+K3 [CANCELLED] TTFT=None 完成延迟=2.0 ITL=[] 抢占=0 重算token=0 decode=0 备注: 未完成，ITL 不适用
+K4 [COMPLETED] TTFT=24.0 完成延迟=32.0 ITL=[2.0, 2.0, 2.0, 2.0] 抢占=0 重算token=0 decode=5 备注: 正常

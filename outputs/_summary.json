@@ -1,0 +1,89 @@
+{
+  "kind": "simulator-prediction",
+  "scenarios": [
+    {
+      "name": "micro_handcheck",
+      "description": "微型用例：5+3 与 3+2 两请求，6 页，预算 8",
+      "fcfs_makespan": 13.0,
+      "cont_makespan": 13.0,
+      "fcfs_completed": 2,
+      "cont_completed": 2,
+      "cont_preemptions": 0,
+      "cont_recompute_work": 0,
+      "fcfs_deadlock": null,
+      "cont_deadlock": null
+    },
+    {
+      "name": "zero_and_single",
+      "description": "output_len=0（仅 prefill）与 =1（单个 decode token）",
+      "fcfs_makespan": 16.0,
+      "cont_makespan": 16.0,
+      "fcfs_completed": 3,
+      "cont_completed": 3,
+      "cont_preemptions": 0,
+      "cont_recompute_work": 0,
+      "fcfs_deadlock": null,
+      "cont_deadlock": null
+    },
+    {
+      "name": "long_prefill_mix",
+      "description": "长 prefill(48) 中穿插多个短请求",
+      "fcfs_makespan": 102.0,
+      "cont_makespan": 106.0,
+      "fcfs_completed": 5,
+      "cont_completed": 5,
+      "cont_preemptions": 1,
+      "cont_recompute_work": 4,
+      "fcfs_deadlock": null,
+      "cont_deadlock": null
+    },
+    {
+      "name": "burst_arrival",
+      "description": "t=5 突发 12 个请求（共需页接近池上限）",
+      "fcfs_makespan": 161.0,
+      "cont_makespan": 189.0,
+      "fcfs_completed": 12,
+      "cont_completed": 12,
+      "cont_preemptions": 4,
+      "cont_recompute_work": 28,
+      "fcfs_deadlock": null,
+      "cont_deadlock": null
+    },
+    {
+      "name": "page_starvation",
+      "description": "页池 10 页，长期高占用 + 后到大 prompt，触发抢占重算",
+      "fcfs_makespan": 40.0,
+      "cont_makespan": 131.0,
+      "fcfs_completed": 0,
+      "cont_completed": 4,
+      "cont_preemptions": 5,
+      "cont_recompute_work": 51,
+      "fcfs_deadlock": "无未来事件且存在无法推进的请求: [('A', 'DECODING', 5, 20, 12, 8), ('B', 'DECODING', 5, 20, 12, 8), ('C', 'WAITING', 0, 0, 16, 0), ('D', 'WAITING', 0, 0, 8, 0)]",
+      "cont_deadlock": null
+    },
+    {
+      "name": "cancellation_mix",
+      "description": "等待中与 decode 中取消，校验私有页全部释放",
+      "fcfs_makespan": 53.0,
+      "cont_makespan": 49.0,
+      "fcfs_completed": 2,
+      "cont_completed": 2,
+      "cont_preemptions": 0,
+      "cont_recompute_work": 0,
+      "fcfs_deadlock": null,
+      "cont_deadlock": null
+    },
+    {
+      "name": "oversized_prompt",
+      "description": "prompt 自身超过总页数必须被明确拒绝",
+      "fcfs_makespan": 23.0,
+      "cont_makespan": 23.0,
+      "fcfs_completed": 2,
+      "cont_completed": 2,
+      "cont_preemptions": 0,
+      "cont_recompute_work": 0,
+      "fcfs_deadlock": null,
+      "cont_deadlock": null
+    }
+  ]
+}

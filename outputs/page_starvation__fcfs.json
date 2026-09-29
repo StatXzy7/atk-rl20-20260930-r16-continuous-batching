@@ -1,0 +1,787 @@
+{
+  "kind": "simulator-prediction",
+  "disclaimer": "本文件全部数字为线性成本模型驱动的模拟器性能预测，不代表任何真实硬件测量（非 measured / benchmark 结果）。",
+  "policy": "fcfs",
+  "config": {
+    "policy": "fcfs",
+    "token_budget": 16,
+    "chunk_max": 8,
+    "page_size": 4,
+    "total_pages": 10,
+    "starvation_threshold": 6.0,
+    "min_protected_chunk": 4,
+    "decode_starvation_gap": 3,
+    "max_preemptions": 100,
+    "cost_model": {
+      "prefill_cost": 1.0,
+      "decode_cost": 1.0,
+      "throughput": 1.0,
+      "fixed_fee": 0.0
+    }
+  },
+  "makespan": 40.0,
+  "aggregate": {
+    "completed": 0,
+    "rejected": 0,
+    "cancelled": 0,
+    "total_emitted_decode_tokens": 16,
+    "completed_decode_tokens": 0,
+    "goodput_decode_tokens_per_time": 0.0,
+    "all_token_throughput_per_time": 1.0,
+    "peak_pages": 10,
+    "final_used_pages": 10,
+    "final_internal_fragmentation_tokens": 0,
+    "peak_internal_fragmentation_tokens": 8,
+    "total_fresh_prefill_work": 24,
+    "total_recompute_work": 0,
+    "total_decode_work": 16,
+    "total_preemptions": 0,
+    "deadlock": "无未来事件且存在无法推进的请求: [('A', 'DECODING', 5, 20, 12, 8), ('B', 'DECODING', 5, 20, 12, 8), ('C', 'WAITING', 0, 0, 16, 0), ('D', 'WAITING', 0, 0, 8, 0)]"
+  },
+  "requests": [
+    {
+      "rid": "A",
+      "status": "DECODING",
+      "arrival": 0,
+      "prompt_len": 12,
+      "output_len": 12,
+      "admit_time": 0.0,
+      "first_token_time": 26.0,
+      "completion_time": null,
+      "completion_latency": null,
+      "ttft": 26.0,
+      "itls": [
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "mean_itl": 2.0,
+      "max_itl": 2.0,
+      "queue_delay": 0.0,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 8
+    },
+    {
+      "rid": "B",
+      "status": "DECODING",
+      "arrival": 0,
+      "prompt_len": 12,
+      "output_len": 12,
+      "admit_time": 0.0,
+      "first_token_time": 26.0,
+      "completion_time": null,
+      "completion_latency": null,
+      "ttft": 26.0,
+      "itls": [
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "mean_itl": 2.0,
+      "max_itl": 2.0,
+      "queue_delay": 0.0,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 8
+    },
+    {
+      "rid": "C",
+      "status": "WAITING",
+      "arrival": 8,
+      "prompt_len": 16,
+      "output_len": 2,
+      "admit_time": null,
+      "first_token_time": null,
+      "completion_time": null,
+      "completion_latency": null,
+      "ttft": null,
+      "itls": [],
+      "mean_itl": null,
+      "max_itl": null,
+      "queue_delay": null,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 0
+    },
+    {
+      "rid": "D",
+      "status": "WAITING",
+      "arrival": 14,
+      "prompt_len": 8,
+      "output_len": 6,
+      "admit_time": null,
+      "first_token_time": null,
+      "completion_time": null,
+      "completion_latency": null,
+      "ttft": null,
+      "itls": [],
+      "mean_itl": null,
+      "max_itl": null,
+      "queue_delay": null,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 0
+    }
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "start": 0.0,
+      "duration": 16.0,
+      "end": 16.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "A",
+          "tokens": 8,
+          "fresh": 8,
+          "replay": 0,
+          "pages": 3,
+          "became_decoder": false,
+          "kv_pos_after": 8,
+          "true_output_len": 12
+        },
+        {
+          "kind": "prefill",
+          "rid": "B",
+          "tokens": 8,
+          "fresh": 8,
+          "replay": 0,
+          "pages": 3,
+          "became_decoder": false,
+          "kv_pos_after": 8,
+          "true_output_len": 12
+        }
+      ],
+      "prefill_tokens": 16,
+      "decode_tokens": 0,
+      "fresh_prefill_tokens": 16,
+      "replay_tokens": 0,
+      "used_pages_before": 0,
+      "used_pages_after": 6,
+      "used_pages_released": 0,
+      "used_pages_final": 6,
+      "peak_pages": 6
+    },
+    {
+      "index": 1,
+      "start": 16.0,
+      "duration": 8.0,
+      "end": 24.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "A",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 3,
+          "became_decoder": true,
+          "kv_pos_after": 12,
+          "true_output_len": 12
+        },
+        {
+          "kind": "prefill",
+          "rid": "B",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 3,
+          "became_decoder": true,
+          "kv_pos_after": 12,
+          "true_output_len": 12
+        }
+      ],
+      "prefill_tokens": 8,
+      "decode_tokens": 0,
+      "fresh_prefill_tokens": 8,
+      "replay_tokens": 0,
+      "used_pages_before": 6,
+      "used_pages_after": 6,
+      "used_pages_released": 0,
+      "used_pages_final": 6,
+      "peak_pages": 6
+    },
+    {
+      "index": 2,
+      "start": 24.0,
+      "duration": 2.0,
+      "end": 26.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "A",
+          "generated": 1,
+          "pages": 4,
+          "env_finished": false
+        },
+        {
+          "kind": "decode",
+          "rid": "B",
+          "generated": 1,
+          "pages": 4,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 2,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 6,
+      "used_pages_after": 8,
+      "used_pages_released": 0,
+      "used_pages_final": 8,
+      "peak_pages": 8
+    },
+    {
+      "index": 3,
+      "start": 26.0,
+      "duration": 2.0,
+      "end": 28.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "B",
+          "generated": 2,
+          "pages": 4,
+          "env_finished": false
+        },
+        {
+          "kind": "decode",
+          "rid": "A",
+          "generated": 2,
+          "pages": 4,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 2,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 8,
+      "used_pages_after": 8,
+      "used_pages_released": 0,
+      "used_pages_final": 8,
+      "peak_pages": 8
+    },
+    {
+      "index": 4,
+      "start": 28.0,
+      "duration": 2.0,
+      "end": 30.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "A",
+          "generated": 3,
+          "pages": 4,
+          "env_finished": false
+        },
+        {
+          "kind": "decode",
+          "rid": "B",
+          "generated": 3,
+          "pages": 4,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 2,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 8,
+      "used_pages_after": 8,
+      "used_pages_released": 0,
+      "used_pages_final": 8,
+      "peak_pages": 8
+    },
+    {
+      "index": 5,
+      "start": 30.0,
+      "duration": 2.0,
+      "end": 32.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "B",
+          "generated": 4,
+          "pages": 4,
+          "env_finished": false
+        },
+        {
+          "kind": "decode",
+          "rid": "A",
+          "generated": 4,
+          "pages": 4,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 2,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 8,
+      "used_pages_after": 8,
+      "used_pages_released": 0,
+      "used_pages_final": 8,
+      "peak_pages": 8
+    },
+    {
+      "index": 6,
+      "start": 32.0,
+      "duration": 2.0,
+      "end": 34.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "A",
+          "generated": 5,
+          "pages": 5,
+          "env_finished": false
+        },
+        {
+          "kind": "decode",
+          "rid": "B",
+          "generated": 5,
+          "pages": 5,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 2,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 8,
+      "used_pages_after": 10,
+      "used_pages_released": 0,
+      "used_pages_final": 10,
+      "peak_pages": 10
+    },
+    {
+      "index": 7,
+      "start": 34.0,
+      "duration": 2.0,
+      "end": 36.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "B",
+          "generated": 6,
+          "pages": 5,
+          "env_finished": false
+        },
+        {
+          "kind": "decode",
+          "rid": "A",
+          "generated": 6,
+          "pages": 5,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 2,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 10,
+      "used_pages_after": 10,
+      "used_pages_released": 0,
+      "used_pages_final": 10,
+      "peak_pages": 10
+    },
+    {
+      "index": 8,
+      "start": 36.0,
+      "duration": 2.0,
+      "end": 38.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "A",
+          "generated": 7,
+          "pages": 5,
+          "env_finished": false
+        },
+        {
+          "kind": "decode",
+          "rid": "B",
+          "generated": 7,
+          "pages": 5,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 2,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 10,
+      "used_pages_after": 10,
+      "used_pages_released": 0,
+      "used_pages_final": 10,
+      "peak_pages": 10
+    },
+    {
+      "index": 9,
+      "start": 38.0,
+      "duration": 2.0,
+      "end": 40.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "B",
+          "generated": 8,
+          "pages": 5,
+          "env_finished": false
+        },
+        {
+          "kind": "decode",
+          "rid": "A",
+          "generated": 8,
+          "pages": 5,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 2,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 10,
+      "used_pages_after": 10,
+      "used_pages_released": 0,
+      "used_pages_final": 10,
+      "peak_pages": 10
+    }
+  ],
+  "events": [
+    {
+      "event": "arrival",
+      "time": 0.0,
+      "rid": "A",
+      "prompt_len": 12
+    },
+    {
+      "event": "arrival",
+      "time": 0.0,
+      "rid": "B",
+      "prompt_len": 12
+    },
+    {
+      "event": "admit",
+      "time": 0.0,
+      "rid": "A",
+      "policy": "fcfs",
+      "pages": 3
+    },
+    {
+      "event": "admit",
+      "time": 0.0,
+      "rid": "B",
+      "policy": "fcfs",
+      "pages": 3
+    },
+    {
+      "event": "prefill",
+      "time": 16.0,
+      "rid": "A",
+      "tokens": 8,
+      "fresh": 8,
+      "replay": 0,
+      "pos": 8,
+      "target": 12,
+      "pages": 3,
+      "became_decoder": false
+    },
+    {
+      "event": "prefill",
+      "time": 16.0,
+      "rid": "B",
+      "tokens": 8,
+      "fresh": 8,
+      "replay": 0,
+      "pos": 8,
+      "target": 12,
+      "pages": 3,
+      "became_decoder": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 16.0,
+      "used_pages": 6,
+      "used_tokens": 16,
+      "internal_fragmentation": 8
+    },
+    {
+      "event": "arrival",
+      "time": 16.0,
+      "rid": "C",
+      "prompt_len": 16
+    },
+    {
+      "event": "arrival",
+      "time": 16.0,
+      "rid": "D",
+      "prompt_len": 8
+    },
+    {
+      "event": "prefill",
+      "time": 24.0,
+      "rid": "A",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 12,
+      "target": 12,
+      "pages": 3,
+      "became_decoder": true
+    },
+    {
+      "event": "prefill",
+      "time": 24.0,
+      "rid": "B",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 12,
+      "target": 12,
+      "pages": 3,
+      "became_decoder": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 24.0,
+      "used_pages": 6,
+      "used_tokens": 24,
+      "internal_fragmentation": 0
+    },
+    {
+      "event": "decode",
+      "time": 26.0,
+      "rid": "A",
+      "generated": 1,
+      "pages": 4,
+      "env_finished": false
+    },
+    {
+      "event": "decode",
+      "time": 26.0,
+      "rid": "B",
+      "generated": 1,
+      "pages": 4,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 26.0,
+      "used_pages": 8,
+      "used_tokens": 26,
+      "internal_fragmentation": 6
+    },
+    {
+      "event": "decode",
+      "time": 28.0,
+      "rid": "B",
+      "generated": 2,
+      "pages": 4,
+      "env_finished": false
+    },
+    {
+      "event": "decode",
+      "time": 28.0,
+      "rid": "A",
+      "generated": 2,
+      "pages": 4,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 28.0,
+      "used_pages": 8,
+      "used_tokens": 28,
+      "internal_fragmentation": 4
+    },
+    {
+      "event": "decode",
+      "time": 30.0,
+      "rid": "A",
+      "generated": 3,
+      "pages": 4,
+      "env_finished": false
+    },
+    {
+      "event": "decode",
+      "time": 30.0,
+      "rid": "B",
+      "generated": 3,
+      "pages": 4,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 30.0,
+      "used_pages": 8,
+      "used_tokens": 30,
+      "internal_fragmentation": 2
+    },
+    {
+      "event": "decode",
+      "time": 32.0,
+      "rid": "B",
+      "generated": 4,
+      "pages": 4,
+      "env_finished": false
+    },
+    {
+      "event": "decode",
+      "time": 32.0,
+      "rid": "A",
+      "generated": 4,
+      "pages": 4,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 32.0,
+      "used_pages": 8,
+      "used_tokens": 32,
+      "internal_fragmentation": 0
+    },
+    {
+      "event": "decode",
+      "time": 34.0,
+      "rid": "A",
+      "generated": 5,
+      "pages": 5,
+      "env_finished": false
+    },
+    {
+      "event": "decode",
+      "time": 34.0,
+      "rid": "B",
+      "generated": 5,
+      "pages": 5,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 34.0,
+      "used_pages": 10,
+      "used_tokens": 34,
+      "internal_fragmentation": 6
+    },
+    {
+      "event": "decode",
+      "time": 36.0,
+      "rid": "B",
+      "generated": 6,
+      "pages": 5,
+      "env_finished": false
+    },
+    {
+      "event": "decode",
+      "time": 36.0,
+      "rid": "A",
+      "generated": 6,
+      "pages": 5,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 36.0,
+      "used_pages": 10,
+      "used_tokens": 36,
+      "internal_fragmentation": 4
+    },
+    {
+      "event": "decode",
+      "time": 38.0,
+      "rid": "A",
+      "generated": 7,
+      "pages": 5,
+      "env_finished": false
+    },
+    {
+      "event": "decode",
+      "time": 38.0,
+      "rid": "B",
+      "generated": 7,
+      "pages": 5,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 38.0,
+      "used_pages": 10,
+      "used_tokens": 38,
+      "internal_fragmentation": 2
+    },
+    {
+      "event": "decode",
+      "time": 40.0,
+      "rid": "B",
+      "generated": 8,
+      "pages": 5,
+      "env_finished": false
+    },
+    {
+      "event": "decode",
+      "time": 40.0,
+      "rid": "A",
+      "generated": 8,
+      "pages": 5,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 40.0,
+      "used_pages": 10,
+      "used_tokens": 40,
+      "internal_fragmentation": 0
+    },
+    {
+      "event": "deadlock",
+      "time": 40.0,
+      "requests": [
+        [
+          "A",
+          "DECODING",
+          5,
+          20,
+          12,
+          8
+        ],
+        [
+          "B",
+          "DECODING",
+          5,
+          20,
+          12,
+          8
+        ],
+        [
+          "C",
+          "WAITING",
+          0,
+          0,
+          16,
+          0
+        ],
+        [
+          "D",
+          "WAITING",
+          0,
+          0,
+          8,
+          0
+        ]
+      ]
+    }
+  ]
+}

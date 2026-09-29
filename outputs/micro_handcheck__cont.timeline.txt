@@ -1,0 +1,21 @@
+# 事件时间线（策略=cont）
+# 警告：以下均为模拟器*预测*时间线，非真实硬件 trace。
+# 配置: {'policy': 'cont', 'token_budget': 8, 'chunk_max': 8, 'page_size': 4, 'total_pages': 6, 'starvation_threshold': 20.0, 'min_protected_chunk': 2, 'decode_starvation_gap': 4, 'max_preemptions': 100000, 'cost_model': {'prefill_cost': 1.0, 'decode_cost': 1.0, 'throughput': 1.0, 'fixed_fee': 0.0}}
+
+== Step 时间线 ==
+step  0 t=   0.00->   5.00 dur=  5.00 P=5 D=0 页:0->2->(释放后)2 | R1:prefill5[页2]
+step  1 t=   5.00->   9.00 dur=  4.00 P=3 D=1 页:2->3->(释放后)3 | R1:decode->#1[页2]; R2:prefill3[页1]
+step  2 t=   9.00->  11.00 dur=  2.00 P=0 D=2 页:3->3->(释放后)3 | R2:decode->#1[页1]; R1:decode->#2[页2]
+step  3 t=  11.00->  13.00 dur=  2.00 P=0 D=2 页:3->4->(释放后)0 | R1:decode->#3[页2]*完成*; R2:decode->#2[页2]*完成*
+
+== 离散事件 ==
+{'event': 'arrival', 'time': 0.0, 'rid': 'R1', 'prompt_len': 5}
+{'event': 'admit', 'time': 0.0, 'rid': 'R1', 'policy': 'cont', 'pages': 2}
+{'event': 'arrival', 'time': 5.0, 'rid': 'R2', 'prompt_len': 3}
+{'event': 'admit', 'time': 5.0, 'rid': 'R2', 'policy': 'cont', 'pages': 1}
+{'event': 'complete', 'time': 13.0, 'rid': 'R1', 'generated': 3, 'freed_pages': 2}
+{'event': 'complete', 'time': 13.0, 'rid': 'R2', 'generated': 2, 'freed_pages': 2}
+
+== 每请求指标 ==
+R1 [COMPLETED] TTFT=9.0 完成延迟=13.0 ITL=[2.0, 2.0] 抢占=0 重算token=0 decode=3 备注: 正常
+R2 [COMPLETED] TTFT=10.0 完成延迟=12.0 ITL=[2.0] 抢占=0 重算token=0 decode=2 备注: 正常

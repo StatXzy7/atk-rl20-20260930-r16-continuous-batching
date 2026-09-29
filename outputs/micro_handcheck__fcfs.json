@@ -1,0 +1,419 @@
+{
+  "kind": "simulator-prediction",
+  "disclaimer": "本文件全部数字为线性成本模型驱动的模拟器性能预测，不代表任何真实硬件测量（非 measured / benchmark 结果）。",
+  "policy": "fcfs",
+  "config": {
+    "policy": "fcfs",
+    "token_budget": 8,
+    "chunk_max": 8,
+    "page_size": 4,
+    "total_pages": 6,
+    "starvation_threshold": 20.0,
+    "min_protected_chunk": 2,
+    "decode_starvation_gap": 4,
+    "max_preemptions": 100000,
+    "cost_model": {
+      "prefill_cost": 1.0,
+      "decode_cost": 1.0,
+      "throughput": 1.0,
+      "fixed_fee": 0.0
+    }
+  },
+  "makespan": 13.0,
+  "aggregate": {
+    "completed": 2,
+    "rejected": 0,
+    "cancelled": 0,
+    "total_emitted_decode_tokens": 5,
+    "completed_decode_tokens": 5,
+    "goodput_decode_tokens_per_time": 0.38461538461538464,
+    "all_token_throughput_per_time": 1.0,
+    "peak_pages": 2,
+    "final_used_pages": 0,
+    "final_internal_fragmentation_tokens": 0,
+    "peak_internal_fragmentation_tokens": 3,
+    "total_fresh_prefill_work": 8,
+    "total_recompute_work": 0,
+    "total_decode_work": 5,
+    "total_preemptions": 0,
+    "deadlock": null
+  },
+  "requests": [
+    {
+      "rid": "R1",
+      "status": "COMPLETED",
+      "arrival": 0,
+      "prompt_len": 5,
+      "output_len": 3,
+      "admit_time": 0.0,
+      "first_token_time": 6.0,
+      "completion_time": 8.0,
+      "completion_latency": 8.0,
+      "ttft": 6.0,
+      "itls": [
+        1.0,
+        1.0
+      ],
+      "mean_itl": 1.0,
+      "max_itl": 1.0,
+      "queue_delay": 0.0,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 3
+    },
+    {
+      "rid": "R2",
+      "status": "COMPLETED",
+      "arrival": 1,
+      "prompt_len": 3,
+      "output_len": 2,
+      "admit_time": 8.0,
+      "first_token_time": 12.0,
+      "completion_time": 13.0,
+      "completion_latency": 12.0,
+      "ttft": 11.0,
+      "itls": [
+        1.0
+      ],
+      "mean_itl": 1.0,
+      "max_itl": 1.0,
+      "queue_delay": 7.0,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 2
+    }
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "start": 0.0,
+      "duration": 5.0,
+      "end": 5.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "R1",
+          "tokens": 5,
+          "fresh": 5,
+          "replay": 0,
+          "pages": 2,
+          "became_decoder": true,
+          "kv_pos_after": 5,
+          "true_output_len": 3
+        }
+      ],
+      "prefill_tokens": 5,
+      "decode_tokens": 0,
+      "fresh_prefill_tokens": 5,
+      "replay_tokens": 0,
+      "used_pages_before": 0,
+      "used_pages_after": 2,
+      "used_pages_released": 0,
+      "used_pages_final": 2,
+      "peak_pages": 2
+    },
+    {
+      "index": 1,
+      "start": 5.0,
+      "duration": 1.0,
+      "end": 6.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "R1",
+          "generated": 1,
+          "pages": 2,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 2,
+      "used_pages_after": 2,
+      "used_pages_released": 0,
+      "used_pages_final": 2,
+      "peak_pages": 2
+    },
+    {
+      "index": 2,
+      "start": 6.0,
+      "duration": 1.0,
+      "end": 7.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "R1",
+          "generated": 2,
+          "pages": 2,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 2,
+      "used_pages_after": 2,
+      "used_pages_released": 0,
+      "used_pages_final": 2,
+      "peak_pages": 2
+    },
+    {
+      "index": 3,
+      "start": 7.0,
+      "duration": 1.0,
+      "end": 8.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "R1",
+          "generated": 3,
+          "pages": 2,
+          "env_finished": true
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 2,
+      "used_pages_after": 2,
+      "used_pages_released": 2,
+      "used_pages_final": 0,
+      "peak_pages": 2
+    },
+    {
+      "index": 4,
+      "start": 8.0,
+      "duration": 3.0,
+      "end": 11.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "R2",
+          "tokens": 3,
+          "fresh": 3,
+          "replay": 0,
+          "pages": 1,
+          "became_decoder": true,
+          "kv_pos_after": 3,
+          "true_output_len": 2
+        }
+      ],
+      "prefill_tokens": 3,
+      "decode_tokens": 0,
+      "fresh_prefill_tokens": 3,
+      "replay_tokens": 0,
+      "used_pages_before": 0,
+      "used_pages_after": 1,
+      "used_pages_released": 0,
+      "used_pages_final": 1,
+      "peak_pages": 2
+    },
+    {
+      "index": 5,
+      "start": 11.0,
+      "duration": 1.0,
+      "end": 12.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "R2",
+          "generated": 1,
+          "pages": 1,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 1,
+      "used_pages_after": 1,
+      "used_pages_released": 0,
+      "used_pages_final": 1,
+      "peak_pages": 2
+    },
+    {
+      "index": 6,
+      "start": 12.0,
+      "duration": 1.0,
+      "end": 13.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "R2",
+          "generated": 2,
+          "pages": 2,
+          "env_finished": true
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 1,
+      "used_pages_after": 2,
+      "used_pages_released": 2,
+      "used_pages_final": 0,
+      "peak_pages": 2
+    }
+  ],
+  "events": [
+    {
+      "event": "arrival",
+      "time": 0.0,
+      "rid": "R1",
+      "prompt_len": 5
+    },
+    {
+      "event": "admit",
+      "time": 0.0,
+      "rid": "R1",
+      "policy": "fcfs",
+      "pages": 2
+    },
+    {
+      "event": "prefill",
+      "time": 5.0,
+      "rid": "R1",
+      "tokens": 5,
+      "fresh": 5,
+      "replay": 0,
+      "pos": 5,
+      "target": 5,
+      "pages": 2,
+      "became_decoder": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 5.0,
+      "used_pages": 2,
+      "used_tokens": 5,
+      "internal_fragmentation": 3
+    },
+    {
+      "event": "arrival",
+      "time": 5.0,
+      "rid": "R2",
+      "prompt_len": 3
+    },
+    {
+      "event": "decode",
+      "time": 6.0,
+      "rid": "R1",
+      "generated": 1,
+      "pages": 2,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 6.0,
+      "used_pages": 2,
+      "used_tokens": 6,
+      "internal_fragmentation": 2
+    },
+    {
+      "event": "decode",
+      "time": 7.0,
+      "rid": "R1",
+      "generated": 2,
+      "pages": 2,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 7.0,
+      "used_pages": 2,
+      "used_tokens": 7,
+      "internal_fragmentation": 1
+    },
+    {
+      "event": "decode",
+      "time": 8.0,
+      "rid": "R1",
+      "generated": 3,
+      "pages": 2,
+      "env_finished": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 8.0,
+      "used_pages": 2,
+      "used_tokens": 8,
+      "internal_fragmentation": 0
+    },
+    {
+      "event": "complete",
+      "time": 8.0,
+      "rid": "R1",
+      "generated": 3,
+      "freed_pages": 2
+    },
+    {
+      "event": "admit",
+      "time": 8.0,
+      "rid": "R2",
+      "policy": "fcfs",
+      "pages": 1
+    },
+    {
+      "event": "prefill",
+      "time": 11.0,
+      "rid": "R2",
+      "tokens": 3,
+      "fresh": 3,
+      "replay": 0,
+      "pos": 3,
+      "target": 3,
+      "pages": 1,
+      "became_decoder": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 11.0,
+      "used_pages": 1,
+      "used_tokens": 3,
+      "internal_fragmentation": 1
+    },
+    {
+      "event": "decode",
+      "time": 12.0,
+      "rid": "R2",
+      "generated": 1,
+      "pages": 1,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 12.0,
+      "used_pages": 1,
+      "used_tokens": 4,
+      "internal_fragmentation": 0
+    },
+    {
+      "event": "decode",
+      "time": 13.0,
+      "rid": "R2",
+      "generated": 2,
+      "pages": 2,
+      "env_finished": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 13.0,
+      "used_pages": 2,
+      "used_tokens": 5,
+      "internal_fragmentation": 3
+    },
+    {
+      "event": "complete",
+      "time": 13.0,
+      "rid": "R2",
+      "generated": 2,
+      "freed_pages": 2
+    }
+  ]
+}

@@ -1,0 +1,457 @@
+{
+  "kind": "simulator-prediction",
+  "disclaimer": "本文件全部数字为线性成本模型驱动的模拟器性能预测，不代表任何真实硬件测量（非 measured / benchmark 结果）。",
+  "policy": "cont",
+  "config": {
+    "policy": "cont",
+    "token_budget": 8,
+    "chunk_max": 8,
+    "page_size": 4,
+    "total_pages": 4,
+    "starvation_threshold": 8.0,
+    "min_protected_chunk": 2,
+    "decode_starvation_gap": 4,
+    "max_preemptions": 100000,
+    "cost_model": {
+      "prefill_cost": 1.0,
+      "decode_cost": 1.0,
+      "throughput": 1.0,
+      "fixed_fee": 0.0
+    }
+  },
+  "makespan": 23.0,
+  "aggregate": {
+    "completed": 2,
+    "rejected": 1,
+    "cancelled": 0,
+    "total_emitted_decode_tokens": 3,
+    "completed_decode_tokens": 3,
+    "goodput_decode_tokens_per_time": 0.13043478260869565,
+    "all_token_throughput_per_time": 1.0,
+    "peak_pages": 4,
+    "final_used_pages": 0,
+    "final_internal_fragmentation_tokens": 0,
+    "peak_internal_fragmentation_tokens": 4,
+    "total_fresh_prefill_work": 20,
+    "total_recompute_work": 0,
+    "total_decode_work": 3,
+    "total_preemptions": 0,
+    "deadlock": null
+  },
+  "requests": [
+    {
+      "rid": "OK1",
+      "status": "COMPLETED",
+      "arrival": 0,
+      "prompt_len": 12,
+      "output_len": 2,
+      "admit_time": 0.0,
+      "first_token_time": 13.0,
+      "completion_time": 14.0,
+      "completion_latency": 14.0,
+      "ttft": 13.0,
+      "itls": [
+        1.0
+      ],
+      "mean_itl": 1.0,
+      "max_itl": 1.0,
+      "queue_delay": 0.0,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 2
+    },
+    {
+      "rid": "HUGE",
+      "status": "REJECTED",
+      "arrival": 1,
+      "prompt_len": 20,
+      "output_len": 2,
+      "admit_time": null,
+      "first_token_time": null,
+      "completion_time": null,
+      "completion_latency": null,
+      "ttft": null,
+      "itls": [],
+      "mean_itl": null,
+      "max_itl": null,
+      "queue_delay": null,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 0
+    },
+    {
+      "rid": "OK2",
+      "status": "COMPLETED",
+      "arrival": 2,
+      "prompt_len": 8,
+      "output_len": 1,
+      "admit_time": 14.0,
+      "first_token_time": 23.0,
+      "completion_time": 23.0,
+      "completion_latency": 21.0,
+      "ttft": 21.0,
+      "itls": [],
+      "mean_itl": null,
+      "max_itl": null,
+      "queue_delay": 12.0,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 1
+    }
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "start": 0.0,
+      "duration": 8.0,
+      "end": 8.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "OK1",
+          "tokens": 8,
+          "fresh": 8,
+          "replay": 0,
+          "pages": 3,
+          "became_decoder": false,
+          "kv_pos_after": 8,
+          "true_output_len": 2
+        }
+      ],
+      "prefill_tokens": 8,
+      "decode_tokens": 0,
+      "fresh_prefill_tokens": 8,
+      "replay_tokens": 0,
+      "used_pages_before": 0,
+      "used_pages_after": 3,
+      "used_pages_released": 0,
+      "used_pages_final": 3,
+      "peak_pages": 3
+    },
+    {
+      "index": 1,
+      "start": 8.0,
+      "duration": 2.0,
+      "end": 10.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "OK1",
+          "tokens": 2,
+          "fresh": 2,
+          "replay": 0,
+          "pages": 3,
+          "became_decoder": false,
+          "kv_pos_after": 10,
+          "true_output_len": 2
+        }
+      ],
+      "prefill_tokens": 2,
+      "decode_tokens": 0,
+      "fresh_prefill_tokens": 2,
+      "replay_tokens": 0,
+      "used_pages_before": 3,
+      "used_pages_after": 3,
+      "used_pages_released": 0,
+      "used_pages_final": 3,
+      "peak_pages": 3
+    },
+    {
+      "index": 2,
+      "start": 10.0,
+      "duration": 2.0,
+      "end": 12.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "OK1",
+          "tokens": 2,
+          "fresh": 2,
+          "replay": 0,
+          "pages": 3,
+          "became_decoder": true,
+          "kv_pos_after": 12,
+          "true_output_len": 2
+        }
+      ],
+      "prefill_tokens": 2,
+      "decode_tokens": 0,
+      "fresh_prefill_tokens": 2,
+      "replay_tokens": 0,
+      "used_pages_before": 3,
+      "used_pages_after": 3,
+      "used_pages_released": 0,
+      "used_pages_final": 3,
+      "peak_pages": 3
+    },
+    {
+      "index": 3,
+      "start": 12.0,
+      "duration": 1.0,
+      "end": 13.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "OK1",
+          "generated": 1,
+          "pages": 4,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 3,
+      "used_pages_after": 4,
+      "used_pages_released": 0,
+      "used_pages_final": 4,
+      "peak_pages": 4
+    },
+    {
+      "index": 4,
+      "start": 13.0,
+      "duration": 1.0,
+      "end": 14.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "OK1",
+          "generated": 2,
+          "pages": 4,
+          "env_finished": true
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 4,
+      "used_pages_after": 4,
+      "used_pages_released": 4,
+      "used_pages_final": 0,
+      "peak_pages": 4
+    },
+    {
+      "index": 5,
+      "start": 14.0,
+      "duration": 8.0,
+      "end": 22.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "OK2",
+          "tokens": 8,
+          "fresh": 8,
+          "replay": 0,
+          "pages": 2,
+          "became_decoder": true,
+          "kv_pos_after": 8,
+          "true_output_len": 1
+        }
+      ],
+      "prefill_tokens": 8,
+      "decode_tokens": 0,
+      "fresh_prefill_tokens": 8,
+      "replay_tokens": 0,
+      "used_pages_before": 0,
+      "used_pages_after": 2,
+      "used_pages_released": 0,
+      "used_pages_final": 2,
+      "peak_pages": 4
+    },
+    {
+      "index": 6,
+      "start": 22.0,
+      "duration": 1.0,
+      "end": 23.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "OK2",
+          "generated": 1,
+          "pages": 3,
+          "env_finished": true
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 2,
+      "used_pages_after": 3,
+      "used_pages_released": 3,
+      "used_pages_final": 0,
+      "peak_pages": 4
+    }
+  ],
+  "events": [
+    {
+      "event": "arrival",
+      "time": 0.0,
+      "rid": "OK1",
+      "prompt_len": 12
+    },
+    {
+      "event": "admit",
+      "time": 0.0,
+      "rid": "OK1",
+      "policy": "cont",
+      "pages": 3
+    },
+    {
+      "event": "prefill",
+      "time": 8.0,
+      "rid": "OK1",
+      "tokens": 8,
+      "fresh": 8,
+      "replay": 0,
+      "pos": 8,
+      "target": 12,
+      "pages": 3,
+      "became_decoder": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 8.0,
+      "used_pages": 3,
+      "used_tokens": 8,
+      "internal_fragmentation": 4
+    },
+    {
+      "event": "reject",
+      "time": 8.0,
+      "rid": "HUGE",
+      "reason": "prompt 需要 5 页，超过总页数 4"
+    },
+    {
+      "event": "arrival",
+      "time": 8.0,
+      "rid": "OK2",
+      "prompt_len": 8
+    },
+    {
+      "event": "prefill",
+      "time": 10.0,
+      "rid": "OK1",
+      "tokens": 2,
+      "fresh": 2,
+      "replay": 0,
+      "pos": 10,
+      "target": 12,
+      "pages": 3,
+      "became_decoder": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 10.0,
+      "used_pages": 3,
+      "used_tokens": 10,
+      "internal_fragmentation": 2
+    },
+    {
+      "event": "prefill",
+      "time": 12.0,
+      "rid": "OK1",
+      "tokens": 2,
+      "fresh": 2,
+      "replay": 0,
+      "pos": 12,
+      "target": 12,
+      "pages": 3,
+      "became_decoder": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 12.0,
+      "used_pages": 3,
+      "used_tokens": 12,
+      "internal_fragmentation": 0
+    },
+    {
+      "event": "decode",
+      "time": 13.0,
+      "rid": "OK1",
+      "generated": 1,
+      "pages": 4,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 13.0,
+      "used_pages": 4,
+      "used_tokens": 13,
+      "internal_fragmentation": 3
+    },
+    {
+      "event": "decode",
+      "time": 14.0,
+      "rid": "OK1",
+      "generated": 2,
+      "pages": 4,
+      "env_finished": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 14.0,
+      "used_pages": 4,
+      "used_tokens": 14,
+      "internal_fragmentation": 2
+    },
+    {
+      "event": "complete",
+      "time": 14.0,
+      "rid": "OK1",
+      "generated": 2,
+      "freed_pages": 4
+    },
+    {
+      "event": "admit",
+      "time": 14.0,
+      "rid": "OK2",
+      "policy": "cont",
+      "pages": 2
+    },
+    {
+      "event": "prefill",
+      "time": 22.0,
+      "rid": "OK2",
+      "tokens": 8,
+      "fresh": 8,
+      "replay": 0,
+      "pos": 8,
+      "target": 8,
+      "pages": 2,
+      "became_decoder": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 22.0,
+      "used_pages": 2,
+      "used_tokens": 8,
+      "internal_fragmentation": 0
+    },
+    {
+      "event": "decode",
+      "time": 23.0,
+      "rid": "OK2",
+      "generated": 1,
+      "pages": 3,
+      "env_finished": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 23.0,
+      "used_pages": 3,
+      "used_tokens": 9,
+      "internal_fragmentation": 3
+    },
+    {
+      "event": "complete",
+      "time": 23.0,
+      "rid": "OK2",
+      "generated": 1,
+      "freed_pages": 3
+    }
+  ]
+}

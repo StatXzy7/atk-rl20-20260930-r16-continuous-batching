@@ -1,0 +1,32 @@
+# 事件时间线（策略=fcfs）
+# 警告：以下均为模拟器*预测*时间线，非真实硬件 trace。
+# 配置: {'policy': 'fcfs', 'token_budget': 16, 'chunk_max': 8, 'page_size': 4, 'total_pages': 10, 'starvation_threshold': 6.0, 'min_protected_chunk': 4, 'decode_starvation_gap': 3, 'max_preemptions': 100, 'cost_model': {'prefill_cost': 1.0, 'decode_cost': 1.0, 'throughput': 1.0, 'fixed_fee': 0.0}}
+
+== Step 时间线 ==
+step  0 t=   0.00->  16.00 dur= 16.00 P=16 D=0 页:0->6->(释放后)6 | A:prefill8[页3]; B:prefill8[页3]
+step  1 t=  16.00->  24.00 dur=  8.00 P=8 D=0 页:6->6->(释放后)6 | A:prefill4[页3]; B:prefill4[页3]
+step  2 t=  24.00->  26.00 dur=  2.00 P=0 D=2 页:6->8->(释放后)8 | A:decode->#1[页4]; B:decode->#1[页4]
+step  3 t=  26.00->  28.00 dur=  2.00 P=0 D=2 页:8->8->(释放后)8 | B:decode->#2[页4]; A:decode->#2[页4]
+step  4 t=  28.00->  30.00 dur=  2.00 P=0 D=2 页:8->8->(释放后)8 | A:decode->#3[页4]; B:decode->#3[页4]
+step  5 t=  30.00->  32.00 dur=  2.00 P=0 D=2 页:8->8->(释放后)8 | B:decode->#4[页4]; A:decode->#4[页4]
+step  6 t=  32.00->  34.00 dur=  2.00 P=0 D=2 页:8->10->(释放后)10 | A:decode->#5[页5]; B:decode->#5[页5]
+step  7 t=  34.00->  36.00 dur=  2.00 P=0 D=2 页:10->10->(释放后)10 | B:decode->#6[页5]; A:decode->#6[页5]
+step  8 t=  36.00->  38.00 dur=  2.00 P=0 D=2 页:10->10->(释放后)10 | A:decode->#7[页5]; B:decode->#7[页5]
+step  9 t=  38.00->  40.00 dur=  2.00 P=0 D=2 页:10->10->(释放后)10 | B:decode->#8[页5]; A:decode->#8[页5]
+
+== 离散事件 ==
+{'event': 'arrival', 'time': 0.0, 'rid': 'A', 'prompt_len': 12}
+{'event': 'arrival', 'time': 0.0, 'rid': 'B', 'prompt_len': 12}
+{'event': 'admit', 'time': 0.0, 'rid': 'A', 'policy': 'fcfs', 'pages': 3}
+{'event': 'admit', 'time': 0.0, 'rid': 'B', 'policy': 'fcfs', 'pages': 3}
+{'event': 'arrival', 'time': 16.0, 'rid': 'C', 'prompt_len': 16}
+{'event': 'arrival', 'time': 16.0, 'rid': 'D', 'prompt_len': 8}
+{'event': 'deadlock', 'time': 40.0, 'requests': [('A', 'DECODING', 5, 20, 12, 8), ('B', 'DECODING', 5, 20, 12, 8), ('C', 'WAITING', 0, 0, 16, 0), ('D', 'WAITING', 0, 0, 8, 0)]}
+
+== 每请求指标 ==
+A [DECODING] TTFT=26.0 完成延迟=None ITL=[2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0] 抢占=0 重算token=0 decode=8 备注: 未完成，ITL 不适用
+B [DECODING] TTFT=26.0 完成延迟=None ITL=[2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0] 抢占=0 重算token=0 decode=8 备注: 未完成，ITL 不适用
+C [WAITING] TTFT=None 完成延迟=None ITL=[] 抢占=0 重算token=0 decode=0 备注: 未完成，ITL 不适用
+D [WAITING] TTFT=None 完成延迟=None ITL=[] 抢占=0 重算token=0 decode=0 备注: 未完成，ITL 不适用
+
+== 死锁/活锁（t=40.0）: 无未来事件且存在无法推进的请求: [('A', 'DECODING', 5, 20, 12, 8), ('B', 'DECODING', 5, 20, 12, 8), ('C', 'WAITING', 0, 0, 16, 0), ('D', 'WAITING', 0, 0, 8, 0)]

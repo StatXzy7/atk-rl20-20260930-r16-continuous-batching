@@ -1,0 +1,1324 @@
+{
+  "kind": "simulator-prediction",
+  "disclaimer": "本文件全部数字为线性成本模型驱动的模拟器性能预测，不代表任何真实硬件测量（非 measured / benchmark 结果）。",
+  "policy": "cont",
+  "config": {
+    "policy": "cont",
+    "token_budget": 16,
+    "chunk_max": 8,
+    "page_size": 8,
+    "total_pages": 12,
+    "starvation_threshold": 12.0,
+    "min_protected_chunk": 4,
+    "decode_starvation_gap": 4,
+    "max_preemptions": 100000,
+    "cost_model": {
+      "prefill_cost": 1.0,
+      "decode_cost": 1.0,
+      "throughput": 1.0,
+      "fixed_fee": 0.0
+    }
+  },
+  "makespan": 106.0,
+  "aggregate": {
+    "completed": 5,
+    "rejected": 0,
+    "cancelled": 0,
+    "total_emitted_decode_tokens": 14,
+    "completed_decode_tokens": 14,
+    "goodput_decode_tokens_per_time": 0.1320754716981132,
+    "all_token_throughput_per_time": 1.0,
+    "peak_pages": 12,
+    "final_used_pages": 0,
+    "final_internal_fragmentation_tokens": 0,
+    "peak_internal_fragmentation_tokens": 56,
+    "total_fresh_prefill_work": 88,
+    "total_recompute_work": 4,
+    "total_decode_work": 14,
+    "total_preemptions": 1,
+    "deadlock": null
+  },
+  "requests": [
+    {
+      "rid": "LONG",
+      "status": "COMPLETED",
+      "arrival": 0,
+      "prompt_len": 48,
+      "output_len": 4,
+      "admit_time": 0.0,
+      "first_token_time": 102.0,
+      "completion_time": 106.0,
+      "completion_latency": 106.0,
+      "ttft": 102.0,
+      "itls": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "mean_itl": 1.3333333333333333,
+      "max_itl": 2.0,
+      "queue_delay": 0.0,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 4
+    },
+    {
+      "rid": "S1",
+      "status": "COMPLETED",
+      "arrival": 2,
+      "prompt_len": 4,
+      "output_len": 3,
+      "admit_time": 8.0,
+      "first_token_time": 40.0,
+      "completion_time": 60.0,
+      "completion_latency": 58.0,
+      "ttft": 38.0,
+      "itls": [
+        10.0,
+        10.0
+      ],
+      "mean_itl": 10.0,
+      "max_itl": 10.0,
+      "queue_delay": 6.0,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 3
+    },
+    {
+      "rid": "S2",
+      "status": "COMPLETED",
+      "arrival": 5,
+      "prompt_len": 8,
+      "output_len": 2,
+      "admit_time": 8.0,
+      "first_token_time": 50.0,
+      "completion_time": 60.0,
+      "completion_latency": 55.0,
+      "ttft": 45.0,
+      "itls": [
+        10.0
+      ],
+      "mean_itl": 10.0,
+      "max_itl": 10.0,
+      "queue_delay": 3.0,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 2
+    },
+    {
+      "rid": "S3",
+      "status": "COMPLETED",
+      "arrival": 9,
+      "prompt_len": 4,
+      "output_len": 2,
+      "admit_time": 24.0,
+      "first_token_time": 81.0,
+      "completion_time": 90.0,
+      "completion_latency": 81.0,
+      "ttft": 72.0,
+      "itls": [
+        9.0
+      ],
+      "mean_itl": 9.0,
+      "max_itl": 9.0,
+      "queue_delay": 15.0,
+      "preemptions": 1,
+      "recompute_tokens": 4,
+      "decode_tokens": 2
+    },
+    {
+      "rid": "MID",
+      "status": "COMPLETED",
+      "arrival": 12,
+      "prompt_len": 24,
+      "output_len": 3,
+      "admit_time": 24.0,
+      "first_token_time": 100.0,
+      "completion_time": 104.0,
+      "completion_latency": 92.0,
+      "ttft": 88.0,
+      "itls": [
+        2.0,
+        2.0
+      ],
+      "mean_itl": 2.0,
+      "max_itl": 2.0,
+      "queue_delay": 12.0,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 3
+    }
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "start": 0.0,
+      "duration": 8.0,
+      "end": 8.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "LONG",
+          "tokens": 8,
+          "fresh": 8,
+          "replay": 0,
+          "pages": 6,
+          "became_decoder": false,
+          "kv_pos_after": 8,
+          "true_output_len": 4
+        }
+      ],
+      "prefill_tokens": 8,
+      "decode_tokens": 0,
+      "fresh_prefill_tokens": 8,
+      "replay_tokens": 0,
+      "used_pages_before": 0,
+      "used_pages_after": 6,
+      "used_pages_released": 0,
+      "used_pages_final": 6,
+      "peak_pages": 6
+    },
+    {
+      "index": 1,
+      "start": 8.0,
+      "duration": 16.0,
+      "end": 24.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "LONG",
+          "tokens": 8,
+          "fresh": 8,
+          "replay": 0,
+          "pages": 6,
+          "became_decoder": false,
+          "kv_pos_after": 16,
+          "true_output_len": 4
+        },
+        {
+          "kind": "prefill",
+          "rid": "S1",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 1,
+          "became_decoder": true,
+          "kv_pos_after": 4,
+          "true_output_len": 3
+        },
+        {
+          "kind": "prefill",
+          "rid": "S2",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 1,
+          "became_decoder": false,
+          "kv_pos_after": 4,
+          "true_output_len": 2
+        }
+      ],
+      "prefill_tokens": 16,
+      "decode_tokens": 0,
+      "fresh_prefill_tokens": 16,
+      "replay_tokens": 0,
+      "used_pages_before": 6,
+      "used_pages_after": 8,
+      "used_pages_released": 0,
+      "used_pages_final": 8,
+      "peak_pages": 8
+    },
+    {
+      "index": 2,
+      "start": 24.0,
+      "duration": 16.0,
+      "end": 40.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "LONG",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 6,
+          "became_decoder": false,
+          "kv_pos_after": 20,
+          "true_output_len": 4
+        },
+        {
+          "kind": "prefill",
+          "rid": "S2",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 1,
+          "became_decoder": true,
+          "kv_pos_after": 8,
+          "true_output_len": 2
+        },
+        {
+          "kind": "decode",
+          "rid": "S1",
+          "generated": 1,
+          "pages": 1,
+          "env_finished": false
+        },
+        {
+          "kind": "prefill",
+          "rid": "S3",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 1,
+          "became_decoder": true,
+          "kv_pos_after": 4,
+          "true_output_len": 2
+        },
+        {
+          "kind": "prefill",
+          "rid": "MID",
+          "tokens": 3,
+          "fresh": 3,
+          "replay": 0,
+          "pages": 3,
+          "became_decoder": false,
+          "kv_pos_after": 3,
+          "true_output_len": 3
+        }
+      ],
+      "prefill_tokens": 15,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 15,
+      "replay_tokens": 0,
+      "used_pages_before": 8,
+      "used_pages_after": 12,
+      "used_pages_released": 0,
+      "used_pages_final": 12,
+      "peak_pages": 12
+    },
+    {
+      "index": 3,
+      "start": 40.0,
+      "duration": 10.0,
+      "end": 50.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "LONG",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 6,
+          "became_decoder": false,
+          "kv_pos_after": 24,
+          "true_output_len": 4
+        },
+        {
+          "kind": "prefill",
+          "rid": "MID",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 3,
+          "became_decoder": false,
+          "kv_pos_after": 7,
+          "true_output_len": 3
+        },
+        {
+          "kind": "decode",
+          "rid": "S2",
+          "generated": 1,
+          "pages": 2,
+          "env_finished": false
+        },
+        {
+          "kind": "decode",
+          "rid": "S1",
+          "generated": 2,
+          "pages": 1,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 8,
+      "decode_tokens": 2,
+      "fresh_prefill_tokens": 8,
+      "replay_tokens": 0,
+      "used_pages_before": 12,
+      "used_pages_after": 12,
+      "used_pages_released": 0,
+      "used_pages_final": 12,
+      "peak_pages": 12
+    },
+    {
+      "index": 4,
+      "start": 50.0,
+      "duration": 10.0,
+      "end": 60.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "LONG",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 6,
+          "became_decoder": false,
+          "kv_pos_after": 28,
+          "true_output_len": 4
+        },
+        {
+          "kind": "prefill",
+          "rid": "MID",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 3,
+          "became_decoder": false,
+          "kv_pos_after": 11,
+          "true_output_len": 3
+        },
+        {
+          "kind": "decode",
+          "rid": "S1",
+          "generated": 3,
+          "pages": 1,
+          "env_finished": true
+        },
+        {
+          "kind": "decode",
+          "rid": "S2",
+          "generated": 2,
+          "pages": 2,
+          "env_finished": true
+        }
+      ],
+      "prefill_tokens": 8,
+      "decode_tokens": 2,
+      "fresh_prefill_tokens": 8,
+      "replay_tokens": 0,
+      "used_pages_before": 12,
+      "used_pages_after": 12,
+      "used_pages_released": 3,
+      "used_pages_final": 9,
+      "peak_pages": 12
+    },
+    {
+      "index": 5,
+      "start": 60.0,
+      "duration": 12.0,
+      "end": 72.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "LONG",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 6,
+          "became_decoder": false,
+          "kv_pos_after": 32,
+          "true_output_len": 4
+        },
+        {
+          "kind": "prefill",
+          "rid": "MID",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 3,
+          "became_decoder": false,
+          "kv_pos_after": 15,
+          "true_output_len": 3
+        },
+        {
+          "kind": "prefill",
+          "rid": "S3",
+          "tokens": 4,
+          "fresh": 0,
+          "replay": 4,
+          "pages": 1,
+          "became_decoder": true,
+          "kv_pos_after": 4,
+          "true_output_len": 2
+        }
+      ],
+      "prefill_tokens": 12,
+      "decode_tokens": 0,
+      "fresh_prefill_tokens": 8,
+      "replay_tokens": 4,
+      "used_pages_before": 9,
+      "used_pages_after": 10,
+      "used_pages_released": 0,
+      "used_pages_final": 10,
+      "peak_pages": 12
+    },
+    {
+      "index": 6,
+      "start": 72.0,
+      "duration": 9.0,
+      "end": 81.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "LONG",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 6,
+          "became_decoder": false,
+          "kv_pos_after": 36,
+          "true_output_len": 4
+        },
+        {
+          "kind": "prefill",
+          "rid": "MID",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 3,
+          "became_decoder": false,
+          "kv_pos_after": 19,
+          "true_output_len": 3
+        },
+        {
+          "kind": "decode",
+          "rid": "S3",
+          "generated": 1,
+          "pages": 1,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 8,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 8,
+      "replay_tokens": 0,
+      "used_pages_before": 10,
+      "used_pages_after": 10,
+      "used_pages_released": 0,
+      "used_pages_final": 10,
+      "peak_pages": 12
+    },
+    {
+      "index": 7,
+      "start": 81.0,
+      "duration": 9.0,
+      "end": 90.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "LONG",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 6,
+          "became_decoder": false,
+          "kv_pos_after": 40,
+          "true_output_len": 4
+        },
+        {
+          "kind": "prefill",
+          "rid": "MID",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 3,
+          "became_decoder": false,
+          "kv_pos_after": 23,
+          "true_output_len": 3
+        },
+        {
+          "kind": "decode",
+          "rid": "S3",
+          "generated": 2,
+          "pages": 1,
+          "env_finished": true
+        }
+      ],
+      "prefill_tokens": 8,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 8,
+      "replay_tokens": 0,
+      "used_pages_before": 10,
+      "used_pages_after": 10,
+      "used_pages_released": 1,
+      "used_pages_final": 9,
+      "peak_pages": 12
+    },
+    {
+      "index": 8,
+      "start": 90.0,
+      "duration": 5.0,
+      "end": 95.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "LONG",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 6,
+          "became_decoder": false,
+          "kv_pos_after": 44,
+          "true_output_len": 4
+        },
+        {
+          "kind": "prefill",
+          "rid": "MID",
+          "tokens": 1,
+          "fresh": 1,
+          "replay": 0,
+          "pages": 3,
+          "became_decoder": true,
+          "kv_pos_after": 24,
+          "true_output_len": 3
+        }
+      ],
+      "prefill_tokens": 5,
+      "decode_tokens": 0,
+      "fresh_prefill_tokens": 5,
+      "replay_tokens": 0,
+      "used_pages_before": 9,
+      "used_pages_after": 9,
+      "used_pages_released": 0,
+      "used_pages_final": 9,
+      "peak_pages": 12
+    },
+    {
+      "index": 9,
+      "start": 95.0,
+      "duration": 5.0,
+      "end": 100.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "LONG",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 6,
+          "became_decoder": true,
+          "kv_pos_after": 48,
+          "true_output_len": 4
+        },
+        {
+          "kind": "decode",
+          "rid": "MID",
+          "generated": 1,
+          "pages": 4,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 4,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 4,
+      "replay_tokens": 0,
+      "used_pages_before": 9,
+      "used_pages_after": 10,
+      "used_pages_released": 0,
+      "used_pages_final": 10,
+      "peak_pages": 12
+    },
+    {
+      "index": 10,
+      "start": 100.0,
+      "duration": 2.0,
+      "end": 102.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "LONG",
+          "generated": 1,
+          "pages": 7,
+          "env_finished": false
+        },
+        {
+          "kind": "decode",
+          "rid": "MID",
+          "generated": 2,
+          "pages": 4,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 2,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 10,
+      "used_pages_after": 11,
+      "used_pages_released": 0,
+      "used_pages_final": 11,
+      "peak_pages": 12
+    },
+    {
+      "index": 11,
+      "start": 102.0,
+      "duration": 2.0,
+      "end": 104.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "LONG",
+          "generated": 2,
+          "pages": 7,
+          "env_finished": false
+        },
+        {
+          "kind": "decode",
+          "rid": "MID",
+          "generated": 3,
+          "pages": 4,
+          "env_finished": true
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 2,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 11,
+      "used_pages_after": 11,
+      "used_pages_released": 4,
+      "used_pages_final": 7,
+      "peak_pages": 12
+    },
+    {
+      "index": 12,
+      "start": 104.0,
+      "duration": 1.0,
+      "end": 105.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "LONG",
+          "generated": 3,
+          "pages": 7,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 7,
+      "used_pages_after": 7,
+      "used_pages_released": 0,
+      "used_pages_final": 7,
+      "peak_pages": 12
+    },
+    {
+      "index": 13,
+      "start": 105.0,
+      "duration": 1.0,
+      "end": 106.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "LONG",
+          "generated": 4,
+          "pages": 7,
+          "env_finished": true
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 7,
+      "used_pages_after": 7,
+      "used_pages_released": 7,
+      "used_pages_final": 0,
+      "peak_pages": 12
+    }
+  ],
+  "events": [
+    {
+      "event": "arrival",
+      "time": 0.0,
+      "rid": "LONG",
+      "prompt_len": 48
+    },
+    {
+      "event": "admit",
+      "time": 0.0,
+      "rid": "LONG",
+      "policy": "cont",
+      "pages": 6
+    },
+    {
+      "event": "prefill",
+      "time": 8.0,
+      "rid": "LONG",
+      "tokens": 8,
+      "fresh": 8,
+      "replay": 0,
+      "pos": 8,
+      "target": 48,
+      "pages": 6,
+      "became_decoder": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 8.0,
+      "used_pages": 6,
+      "used_tokens": 8,
+      "internal_fragmentation": 40
+    },
+    {
+      "event": "arrival",
+      "time": 8.0,
+      "rid": "S1",
+      "prompt_len": 4
+    },
+    {
+      "event": "arrival",
+      "time": 8.0,
+      "rid": "S2",
+      "prompt_len": 8
+    },
+    {
+      "event": "admit",
+      "time": 8.0,
+      "rid": "S1",
+      "policy": "cont",
+      "pages": 1
+    },
+    {
+      "event": "admit",
+      "time": 8.0,
+      "rid": "S2",
+      "policy": "cont",
+      "pages": 1
+    },
+    {
+      "event": "prefill",
+      "time": 24.0,
+      "rid": "LONG",
+      "tokens": 8,
+      "fresh": 8,
+      "replay": 0,
+      "pos": 16,
+      "target": 48,
+      "pages": 6,
+      "became_decoder": false
+    },
+    {
+      "event": "prefill",
+      "time": 24.0,
+      "rid": "S1",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 4,
+      "target": 4,
+      "pages": 1,
+      "became_decoder": true
+    },
+    {
+      "event": "prefill",
+      "time": 24.0,
+      "rid": "S2",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 4,
+      "target": 8,
+      "pages": 1,
+      "became_decoder": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 24.0,
+      "used_pages": 8,
+      "used_tokens": 24,
+      "internal_fragmentation": 40
+    },
+    {
+      "event": "arrival",
+      "time": 24.0,
+      "rid": "S3",
+      "prompt_len": 4
+    },
+    {
+      "event": "arrival",
+      "time": 24.0,
+      "rid": "MID",
+      "prompt_len": 24
+    },
+    {
+      "event": "admit",
+      "time": 24.0,
+      "rid": "S3",
+      "policy": "cont",
+      "pages": 1
+    },
+    {
+      "event": "admit",
+      "time": 24.0,
+      "rid": "MID",
+      "policy": "cont",
+      "pages": 3
+    },
+    {
+      "event": "prefill",
+      "time": 40.0,
+      "rid": "LONG",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 20,
+      "target": 48,
+      "pages": 6,
+      "became_decoder": false
+    },
+    {
+      "event": "prefill",
+      "time": 40.0,
+      "rid": "S2",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 8,
+      "target": 8,
+      "pages": 1,
+      "became_decoder": true
+    },
+    {
+      "event": "decode",
+      "time": 40.0,
+      "rid": "S1",
+      "generated": 1,
+      "pages": 1,
+      "env_finished": false
+    },
+    {
+      "event": "prefill",
+      "time": 40.0,
+      "rid": "S3",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 4,
+      "target": 4,
+      "pages": 1,
+      "became_decoder": true
+    },
+    {
+      "event": "prefill",
+      "time": 40.0,
+      "rid": "MID",
+      "tokens": 3,
+      "fresh": 3,
+      "replay": 0,
+      "pos": 3,
+      "target": 24,
+      "pages": 3,
+      "became_decoder": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 40.0,
+      "used_pages": 12,
+      "used_tokens": 40,
+      "internal_fragmentation": 56
+    },
+    {
+      "event": "preempt",
+      "time": 40.0,
+      "rid": "S3",
+      "wasted_tokens": 4,
+      "freed_pages": 1,
+      "preempt_count": 1,
+      "reason": "decode"
+    },
+    {
+      "event": "prefill",
+      "time": 50.0,
+      "rid": "LONG",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 24,
+      "target": 48,
+      "pages": 6,
+      "became_decoder": false
+    },
+    {
+      "event": "prefill",
+      "time": 50.0,
+      "rid": "MID",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 7,
+      "target": 24,
+      "pages": 3,
+      "became_decoder": false
+    },
+    {
+      "event": "decode",
+      "time": 50.0,
+      "rid": "S2",
+      "generated": 1,
+      "pages": 2,
+      "env_finished": false
+    },
+    {
+      "event": "decode",
+      "time": 50.0,
+      "rid": "S1",
+      "generated": 2,
+      "pages": 1,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 50.0,
+      "used_pages": 12,
+      "used_tokens": 46,
+      "internal_fragmentation": 50
+    },
+    {
+      "event": "prefill",
+      "time": 60.0,
+      "rid": "LONG",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 28,
+      "target": 48,
+      "pages": 6,
+      "became_decoder": false
+    },
+    {
+      "event": "prefill",
+      "time": 60.0,
+      "rid": "MID",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 11,
+      "target": 24,
+      "pages": 3,
+      "became_decoder": false
+    },
+    {
+      "event": "decode",
+      "time": 60.0,
+      "rid": "S1",
+      "generated": 3,
+      "pages": 1,
+      "env_finished": true
+    },
+    {
+      "event": "decode",
+      "time": 60.0,
+      "rid": "S2",
+      "generated": 2,
+      "pages": 2,
+      "env_finished": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 60.0,
+      "used_pages": 12,
+      "used_tokens": 56,
+      "internal_fragmentation": 40
+    },
+    {
+      "event": "complete",
+      "time": 60.0,
+      "rid": "S1",
+      "generated": 3,
+      "freed_pages": 1
+    },
+    {
+      "event": "complete",
+      "time": 60.0,
+      "rid": "S2",
+      "generated": 2,
+      "freed_pages": 2
+    },
+    {
+      "event": "admit",
+      "time": 60.0,
+      "rid": "S3",
+      "policy": "cont",
+      "pages": 1
+    },
+    {
+      "event": "prefill",
+      "time": 72.0,
+      "rid": "LONG",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 32,
+      "target": 48,
+      "pages": 6,
+      "became_decoder": false
+    },
+    {
+      "event": "prefill",
+      "time": 72.0,
+      "rid": "MID",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 15,
+      "target": 24,
+      "pages": 3,
+      "became_decoder": false
+    },
+    {
+      "event": "prefill",
+      "time": 72.0,
+      "rid": "S3",
+      "tokens": 4,
+      "fresh": 0,
+      "replay": 4,
+      "pos": 4,
+      "target": 4,
+      "pages": 1,
+      "became_decoder": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 72.0,
+      "used_pages": 10,
+      "used_tokens": 51,
+      "internal_fragmentation": 29
+    },
+    {
+      "event": "prefill",
+      "time": 81.0,
+      "rid": "LONG",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 36,
+      "target": 48,
+      "pages": 6,
+      "became_decoder": false
+    },
+    {
+      "event": "prefill",
+      "time": 81.0,
+      "rid": "MID",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 19,
+      "target": 24,
+      "pages": 3,
+      "became_decoder": false
+    },
+    {
+      "event": "decode",
+      "time": 81.0,
+      "rid": "S3",
+      "generated": 1,
+      "pages": 1,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 81.0,
+      "used_pages": 10,
+      "used_tokens": 60,
+      "internal_fragmentation": 20
+    },
+    {
+      "event": "prefill",
+      "time": 90.0,
+      "rid": "LONG",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 40,
+      "target": 48,
+      "pages": 6,
+      "became_decoder": false
+    },
+    {
+      "event": "prefill",
+      "time": 90.0,
+      "rid": "MID",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 23,
+      "target": 24,
+      "pages": 3,
+      "became_decoder": false
+    },
+    {
+      "event": "decode",
+      "time": 90.0,
+      "rid": "S3",
+      "generated": 2,
+      "pages": 1,
+      "env_finished": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 90.0,
+      "used_pages": 10,
+      "used_tokens": 69,
+      "internal_fragmentation": 11
+    },
+    {
+      "event": "complete",
+      "time": 90.0,
+      "rid": "S3",
+      "generated": 2,
+      "freed_pages": 1
+    },
+    {
+      "event": "prefill",
+      "time": 95.0,
+      "rid": "LONG",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 44,
+      "target": 48,
+      "pages": 6,
+      "became_decoder": false
+    },
+    {
+      "event": "prefill",
+      "time": 95.0,
+      "rid": "MID",
+      "tokens": 1,
+      "fresh": 1,
+      "replay": 0,
+      "pos": 24,
+      "target": 24,
+      "pages": 3,
+      "became_decoder": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 95.0,
+      "used_pages": 9,
+      "used_tokens": 68,
+      "internal_fragmentation": 4
+    },
+    {
+      "event": "prefill",
+      "time": 100.0,
+      "rid": "LONG",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 48,
+      "target": 48,
+      "pages": 6,
+      "became_decoder": true
+    },
+    {
+      "event": "decode",
+      "time": 100.0,
+      "rid": "MID",
+      "generated": 1,
+      "pages": 4,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 100.0,
+      "used_pages": 10,
+      "used_tokens": 73,
+      "internal_fragmentation": 7
+    },
+    {
+      "event": "decode",
+      "time": 102.0,
+      "rid": "LONG",
+      "generated": 1,
+      "pages": 7,
+      "env_finished": false
+    },
+    {
+      "event": "decode",
+      "time": 102.0,
+      "rid": "MID",
+      "generated": 2,
+      "pages": 4,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 102.0,
+      "used_pages": 11,
+      "used_tokens": 75,
+      "internal_fragmentation": 13
+    },
+    {
+      "event": "decode",
+      "time": 104.0,
+      "rid": "LONG",
+      "generated": 2,
+      "pages": 7,
+      "env_finished": false
+    },
+    {
+      "event": "decode",
+      "time": 104.0,
+      "rid": "MID",
+      "generated": 3,
+      "pages": 4,
+      "env_finished": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 104.0,
+      "used_pages": 11,
+      "used_tokens": 77,
+      "internal_fragmentation": 11
+    },
+    {
+      "event": "complete",
+      "time": 104.0,
+      "rid": "MID",
+      "generated": 3,
+      "freed_pages": 4
+    },
+    {
+      "event": "decode",
+      "time": 105.0,
+      "rid": "LONG",
+      "generated": 3,
+      "pages": 7,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 105.0,
+      "used_pages": 7,
+      "used_tokens": 51,
+      "internal_fragmentation": 5
+    },
+    {
+      "event": "decode",
+      "time": 106.0,
+      "rid": "LONG",
+      "generated": 4,
+      "pages": 7,
+      "env_finished": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 106.0,
+      "used_pages": 7,
+      "used_tokens": 52,
+      "internal_fragmentation": 4
+    },
+    {
+      "event": "complete",
+      "time": 106.0,
+      "rid": "LONG",
+      "generated": 4,
+      "freed_pages": 7
+    }
+  ]
+}

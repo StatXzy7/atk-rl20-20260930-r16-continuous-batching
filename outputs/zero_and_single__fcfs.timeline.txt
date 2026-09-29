@@ -1,0 +1,26 @@
+# 事件时间线（策略=fcfs）
+# 警告：以下均为模拟器*预测*时间线，非真实硬件 trace。
+# 配置: {'policy': 'fcfs', 'token_budget': 8, 'chunk_max': 8, 'page_size': 4, 'total_pages': 8, 'starvation_threshold': 10.0, 'min_protected_chunk': 2, 'decode_starvation_gap': 4, 'max_preemptions': 100000, 'cost_model': {'prefill_cost': 1.0, 'decode_cost': 1.0, 'throughput': 1.0, 'fixed_fee': 0.0}}
+
+== Step 时间线 ==
+step  0 t=   0.00->   8.00 dur=  8.00 P=8 D=0 页:0->4->(释放后)4 | N3:prefill6[页2]; O1:prefill2[页1]
+step  1 t=   8.00->  12.00 dur=  4.00 P=4 D=0 页:4->4->(释放后)3 | Z0:prefill4[页1]
+step  2 t=  12.00->  14.00 dur=  2.00 P=0 D=2 页:3->3->(释放后)2 | N3:decode->#1[页2]; O1:decode->#1[页1]*完成*
+step  3 t=  14.00->  15.00 dur=  1.00 P=0 D=1 页:2->2->(释放后)2 | N3:decode->#2[页2]
+step  4 t=  15.00->  16.00 dur=  1.00 P=0 D=1 页:2->3->(释放后)0 | N3:decode->#3[页3]*完成*
+
+== 离散事件 ==
+{'event': 'arrival', 'time': 0.0, 'rid': 'N3', 'prompt_len': 6}
+{'event': 'arrival', 'time': 0.0, 'rid': 'O1', 'prompt_len': 2}
+{'event': 'arrival', 'time': 0.0, 'rid': 'Z0', 'prompt_len': 4}
+{'event': 'admit', 'time': 0.0, 'rid': 'N3', 'policy': 'fcfs', 'pages': 2}
+{'event': 'admit', 'time': 0.0, 'rid': 'O1', 'policy': 'fcfs', 'pages': 1}
+{'event': 'admit', 'time': 0.0, 'rid': 'Z0', 'policy': 'fcfs', 'pages': 1}
+{'event': 'complete', 'time': 12.0, 'rid': 'Z0', 'generated': 0, 'freed_pages': 1}
+{'event': 'complete', 'time': 14.0, 'rid': 'O1', 'generated': 1, 'freed_pages': 1}
+{'event': 'complete', 'time': 16.0, 'rid': 'N3', 'generated': 3, 'freed_pages': 3}
+
+== 每请求指标 ==
+N3 [COMPLETED] TTFT=14.0 完成延迟=16.0 ITL=[1.0, 1.0] 抢占=0 重算token=0 decode=3 备注: 正常
+O1 [COMPLETED] TTFT=14.0 完成延迟=14.0 ITL=[] 抢占=0 重算token=0 decode=1 备注: output_len=1：无相邻 token 对，ITL 序列为空；TTFT 即首 token（也是完成）时刻
+Z0 [COMPLETED] TTFT=None 完成延迟=12.0 ITL=[] 抢占=0 重算token=0 decode=0 备注: output_len=0：无生成 token，TTFT/ITL 不适用；完成延迟=首个可服务 step 的结束时刻

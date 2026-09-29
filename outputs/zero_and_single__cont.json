@@ -1,0 +1,392 @@
+{
+  "kind": "simulator-prediction",
+  "disclaimer": "本文件全部数字为线性成本模型驱动的模拟器性能预测，不代表任何真实硬件测量（非 measured / benchmark 结果）。",
+  "policy": "cont",
+  "config": {
+    "policy": "cont",
+    "token_budget": 8,
+    "chunk_max": 8,
+    "page_size": 4,
+    "total_pages": 8,
+    "starvation_threshold": 10.0,
+    "min_protected_chunk": 2,
+    "decode_starvation_gap": 4,
+    "max_preemptions": 100000,
+    "cost_model": {
+      "prefill_cost": 1.0,
+      "decode_cost": 1.0,
+      "throughput": 1.0,
+      "fixed_fee": 0.0
+    }
+  },
+  "makespan": 16.0,
+  "aggregate": {
+    "completed": 3,
+    "rejected": 0,
+    "cancelled": 0,
+    "total_emitted_decode_tokens": 4,
+    "completed_decode_tokens": 4,
+    "goodput_decode_tokens_per_time": 0.25,
+    "all_token_throughput_per_time": 1.0,
+    "peak_pages": 4,
+    "final_used_pages": 0,
+    "final_internal_fragmentation_tokens": 0,
+    "peak_internal_fragmentation_tokens": 8,
+    "total_fresh_prefill_work": 12,
+    "total_recompute_work": 0,
+    "total_decode_work": 4,
+    "total_preemptions": 0,
+    "deadlock": null
+  },
+  "requests": [
+    {
+      "rid": "N3",
+      "status": "COMPLETED",
+      "arrival": 0,
+      "prompt_len": 6,
+      "output_len": 3,
+      "admit_time": 0.0,
+      "first_token_time": 14.0,
+      "completion_time": 16.0,
+      "completion_latency": 16.0,
+      "ttft": 14.0,
+      "itls": [
+        1.0,
+        1.0
+      ],
+      "mean_itl": 1.0,
+      "max_itl": 1.0,
+      "queue_delay": 0.0,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 3
+    },
+    {
+      "rid": "O1",
+      "status": "COMPLETED",
+      "arrival": 0,
+      "prompt_len": 2,
+      "output_len": 1,
+      "admit_time": 0.0,
+      "first_token_time": 14.0,
+      "completion_time": 14.0,
+      "completion_latency": 14.0,
+      "ttft": 14.0,
+      "itls": [],
+      "mean_itl": null,
+      "max_itl": null,
+      "queue_delay": 0.0,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 1
+    },
+    {
+      "rid": "Z0",
+      "status": "COMPLETED",
+      "arrival": 0,
+      "prompt_len": 4,
+      "output_len": 0,
+      "admit_time": 0.0,
+      "first_token_time": null,
+      "completion_time": 14.0,
+      "completion_latency": 14.0,
+      "ttft": null,
+      "itls": [],
+      "mean_itl": null,
+      "max_itl": null,
+      "queue_delay": 0.0,
+      "preemptions": 0,
+      "recompute_tokens": 0,
+      "decode_tokens": 0
+    }
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "start": 0.0,
+      "duration": 8.0,
+      "end": 8.0,
+      "actions": [
+        {
+          "kind": "prefill",
+          "rid": "N3",
+          "tokens": 6,
+          "fresh": 6,
+          "replay": 0,
+          "pages": 2,
+          "became_decoder": true,
+          "kv_pos_after": 6,
+          "true_output_len": 3
+        },
+        {
+          "kind": "prefill",
+          "rid": "O1",
+          "tokens": 2,
+          "fresh": 2,
+          "replay": 0,
+          "pages": 1,
+          "became_decoder": true,
+          "kv_pos_after": 2,
+          "true_output_len": 1
+        }
+      ],
+      "prefill_tokens": 8,
+      "decode_tokens": 0,
+      "fresh_prefill_tokens": 8,
+      "replay_tokens": 0,
+      "used_pages_before": 0,
+      "used_pages_after": 4,
+      "used_pages_released": 0,
+      "used_pages_final": 4,
+      "peak_pages": 4
+    },
+    {
+      "index": 1,
+      "start": 8.0,
+      "duration": 6.0,
+      "end": 14.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "N3",
+          "generated": 1,
+          "pages": 2,
+          "env_finished": false
+        },
+        {
+          "kind": "decode",
+          "rid": "O1",
+          "generated": 1,
+          "pages": 1,
+          "env_finished": true
+        },
+        {
+          "kind": "prefill",
+          "rid": "Z0",
+          "tokens": 4,
+          "fresh": 4,
+          "replay": 0,
+          "pages": 1,
+          "became_decoder": true,
+          "kv_pos_after": 4,
+          "true_output_len": 0
+        }
+      ],
+      "prefill_tokens": 4,
+      "decode_tokens": 2,
+      "fresh_prefill_tokens": 4,
+      "replay_tokens": 0,
+      "used_pages_before": 4,
+      "used_pages_after": 4,
+      "used_pages_released": 2,
+      "used_pages_final": 2,
+      "peak_pages": 4
+    },
+    {
+      "index": 2,
+      "start": 14.0,
+      "duration": 1.0,
+      "end": 15.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "N3",
+          "generated": 2,
+          "pages": 2,
+          "env_finished": false
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 2,
+      "used_pages_after": 2,
+      "used_pages_released": 0,
+      "used_pages_final": 2,
+      "peak_pages": 4
+    },
+    {
+      "index": 3,
+      "start": 15.0,
+      "duration": 1.0,
+      "end": 16.0,
+      "actions": [
+        {
+          "kind": "decode",
+          "rid": "N3",
+          "generated": 3,
+          "pages": 3,
+          "env_finished": true
+        }
+      ],
+      "prefill_tokens": 0,
+      "decode_tokens": 1,
+      "fresh_prefill_tokens": 0,
+      "replay_tokens": 0,
+      "used_pages_before": 2,
+      "used_pages_after": 3,
+      "used_pages_released": 3,
+      "used_pages_final": 0,
+      "peak_pages": 4
+    }
+  ],
+  "events": [
+    {
+      "event": "arrival",
+      "time": 0.0,
+      "rid": "N3",
+      "prompt_len": 6
+    },
+    {
+      "event": "arrival",
+      "time": 0.0,
+      "rid": "O1",
+      "prompt_len": 2
+    },
+    {
+      "event": "arrival",
+      "time": 0.0,
+      "rid": "Z0",
+      "prompt_len": 4
+    },
+    {
+      "event": "admit",
+      "time": 0.0,
+      "rid": "N3",
+      "policy": "cont",
+      "pages": 2
+    },
+    {
+      "event": "admit",
+      "time": 0.0,
+      "rid": "O1",
+      "policy": "cont",
+      "pages": 1
+    },
+    {
+      "event": "admit",
+      "time": 0.0,
+      "rid": "Z0",
+      "policy": "cont",
+      "pages": 1
+    },
+    {
+      "event": "prefill",
+      "time": 8.0,
+      "rid": "N3",
+      "tokens": 6,
+      "fresh": 6,
+      "replay": 0,
+      "pos": 6,
+      "target": 6,
+      "pages": 2,
+      "became_decoder": true
+    },
+    {
+      "event": "prefill",
+      "time": 8.0,
+      "rid": "O1",
+      "tokens": 2,
+      "fresh": 2,
+      "replay": 0,
+      "pos": 2,
+      "target": 2,
+      "pages": 1,
+      "became_decoder": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 8.0,
+      "used_pages": 4,
+      "used_tokens": 8,
+      "internal_fragmentation": 8
+    },
+    {
+      "event": "decode",
+      "time": 14.0,
+      "rid": "N3",
+      "generated": 1,
+      "pages": 2,
+      "env_finished": false
+    },
+    {
+      "event": "decode",
+      "time": 14.0,
+      "rid": "O1",
+      "generated": 1,
+      "pages": 1,
+      "env_finished": true
+    },
+    {
+      "event": "prefill",
+      "time": 14.0,
+      "rid": "Z0",
+      "tokens": 4,
+      "fresh": 4,
+      "replay": 0,
+      "pos": 4,
+      "target": 4,
+      "pages": 1,
+      "became_decoder": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 14.0,
+      "used_pages": 4,
+      "used_tokens": 14,
+      "internal_fragmentation": 2
+    },
+    {
+      "event": "complete",
+      "time": 14.0,
+      "rid": "O1",
+      "generated": 1,
+      "freed_pages": 1
+    },
+    {
+      "event": "complete",
+      "time": 14.0,
+      "rid": "Z0",
+      "generated": 0,
+      "freed_pages": 1
+    },
+    {
+      "event": "decode",
+      "time": 15.0,
+      "rid": "N3",
+      "generated": 2,
+      "pages": 2,
+      "env_finished": false
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 15.0,
+      "used_pages": 2,
+      "used_tokens": 8,
+      "internal_fragmentation": 0
+    },
+    {
+      "event": "decode",
+      "time": 16.0,
+      "rid": "N3",
+      "generated": 3,
+      "pages": 3,
+      "env_finished": true
+    },
+    {
+      "event": "frag_snapshot",
+      "time": 16.0,
+      "used_pages": 3,
+      "used_tokens": 9,
+      "internal_fragmentation": 3
+    },
+    {
+      "event": "complete",
+      "time": 16.0,
+      "rid": "N3",
+      "generated": 3,
+      "freed_pages": 3
+    }
+  ]
+}

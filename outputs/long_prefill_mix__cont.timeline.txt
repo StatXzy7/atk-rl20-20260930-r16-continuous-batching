@@ -1,0 +1,45 @@
+# 事件时间线（策略=cont）
+# 警告：以下均为模拟器*预测*时间线，非真实硬件 trace。
+# 配置: {'policy': 'cont', 'token_budget': 16, 'chunk_max': 8, 'page_size': 8, 'total_pages': 12, 'starvation_threshold': 12.0, 'min_protected_chunk': 4, 'decode_starvation_gap': 4, 'max_preemptions': 100000, 'cost_model': {'prefill_cost': 1.0, 'decode_cost': 1.0, 'throughput': 1.0, 'fixed_fee': 0.0}}
+
+== Step 时间线 ==
+step  0 t=   0.00->   8.00 dur=  8.00 P=8 D=0 页:0->6->(释放后)6 | LONG:prefill8[页6]
+step  1 t=   8.00->  24.00 dur= 16.00 P=16 D=0 页:6->8->(释放后)8 | LONG:prefill8[页6]; S1:prefill4[页1]; S2:prefill4[页1]
+step  2 t=  24.00->  40.00 dur= 16.00 P=15 D=1 页:8->12->(释放后)12 | LONG:prefill4[页6]; S2:prefill4[页1]; S1:decode->#1[页1]; S3:prefill4[页1]; MID:prefill3[页3]
+step  3 t=  40.00->  50.00 dur= 10.00 P=8 D=2 页:12->12->(释放后)12 | LONG:prefill4[页6]; MID:prefill4[页3]; S2:decode->#1[页2]; S1:decode->#2[页1]
+step  4 t=  50.00->  60.00 dur= 10.00 P=8 D=2 页:12->12->(释放后)9 | LONG:prefill4[页6]; MID:prefill4[页3]; S1:decode->#3[页1]*完成*; S2:decode->#2[页2]*完成*
+step  5 t=  60.00->  72.00 dur= 12.00 P=12 D=0 页:9->10->(释放后)10 | LONG:prefill4[页6]; MID:prefill4[页3]; S3:重算4 (fresh0+replay4)[页1]
+step  6 t=  72.00->  81.00 dur=  9.00 P=8 D=1 页:10->10->(释放后)10 | LONG:prefill4[页6]; MID:prefill4[页3]; S3:decode->#1[页1]
+step  7 t=  81.00->  90.00 dur=  9.00 P=8 D=1 页:10->10->(释放后)9 | LONG:prefill4[页6]; MID:prefill4[页3]; S3:decode->#2[页1]*完成*
+step  8 t=  90.00->  95.00 dur=  5.00 P=5 D=0 页:9->9->(释放后)9 | LONG:prefill4[页6]; MID:prefill1[页3]
+step  9 t=  95.00-> 100.00 dur=  5.00 P=4 D=1 页:9->10->(释放后)10 | LONG:prefill4[页6]; MID:decode->#1[页4]
+step 10 t= 100.00-> 102.00 dur=  2.00 P=0 D=2 页:10->11->(释放后)11 | LONG:decode->#1[页7]; MID:decode->#2[页4]
+step 11 t= 102.00-> 104.00 dur=  2.00 P=0 D=2 页:11->11->(释放后)7 | LONG:decode->#2[页7]; MID:decode->#3[页4]*完成*
+step 12 t= 104.00-> 105.00 dur=  1.00 P=0 D=1 页:7->7->(释放后)7 | LONG:decode->#3[页7]
+step 13 t= 105.00-> 106.00 dur=  1.00 P=0 D=1 页:7->7->(释放后)0 | LONG:decode->#4[页7]*完成*
+
+== 离散事件 ==
+{'event': 'arrival', 'time': 0.0, 'rid': 'LONG', 'prompt_len': 48}
+{'event': 'admit', 'time': 0.0, 'rid': 'LONG', 'policy': 'cont', 'pages': 6}
+{'event': 'arrival', 'time': 8.0, 'rid': 'S1', 'prompt_len': 4}
+{'event': 'arrival', 'time': 8.0, 'rid': 'S2', 'prompt_len': 8}
+{'event': 'admit', 'time': 8.0, 'rid': 'S1', 'policy': 'cont', 'pages': 1}
+{'event': 'admit', 'time': 8.0, 'rid': 'S2', 'policy': 'cont', 'pages': 1}
+{'event': 'arrival', 'time': 24.0, 'rid': 'S3', 'prompt_len': 4}
+{'event': 'arrival', 'time': 24.0, 'rid': 'MID', 'prompt_len': 24}
+{'event': 'admit', 'time': 24.0, 'rid': 'S3', 'policy': 'cont', 'pages': 1}
+{'event': 'admit', 'time': 24.0, 'rid': 'MID', 'policy': 'cont', 'pages': 3}
+{'event': 'preempt', 'time': 40.0, 'rid': 'S3', 'wasted_tokens': 4, 'freed_pages': 1, 'preempt_count': 1, 'reason': 'decode'}
+{'event': 'complete', 'time': 60.0, 'rid': 'S1', 'generated': 3, 'freed_pages': 1}
+{'event': 'complete', 'time': 60.0, 'rid': 'S2', 'generated': 2, 'freed_pages': 2}
+{'event': 'admit', 'time': 60.0, 'rid': 'S3', 'policy': 'cont', 'pages': 1}
+{'event': 'complete', 'time': 90.0, 'rid': 'S3', 'generated': 2, 'freed_pages': 1}
+{'event': 'complete', 'time': 104.0, 'rid': 'MID', 'generated': 3, 'freed_pages': 4}
+{'event': 'complete', 'time': 106.0, 'rid': 'LONG', 'generated': 4, 'freed_pages': 7}
+
+== 每请求指标 ==
+LONG [COMPLETED] TTFT=102.0 完成延迟=106.0 ITL=[2.0, 1.0, 1.0] 抢占=0 重算token=0 decode=4 备注: 正常
+S1 [COMPLETED] TTFT=38.0 完成延迟=58.0 ITL=[10.0, 10.0] 抢占=0 重算token=0 decode=3 备注: 正常
+S2 [COMPLETED] TTFT=45.0 完成延迟=55.0 ITL=[10.0] 抢占=0 重算token=0 decode=2 备注: 正常
+S3 [COMPLETED] TTFT=72.0 完成延迟=81.0 ITL=[9.0] 抢占=1 重算token=4 decode=2 备注: 正常
+MID [COMPLETED] TTFT=88.0 完成延迟=92.0 ITL=[2.0, 2.0] 抢占=0 重算token=0 decode=3 备注: 正常
