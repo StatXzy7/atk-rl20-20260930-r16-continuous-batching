@@ -1,0 +1,24 @@
+{"kind": "simulated", "policy": "fcfs", "seq": 0, "event": "arrival", "time": 0.0, "rid": "A", "prompt_len": 3}
+{"kind": "simulated", "policy": "fcfs", "seq": 1, "event": "arrival", "time": 0.0, "rid": "B", "prompt_len": 2}
+{"kind": "simulated", "policy": "fcfs", "seq": 2, "event": "step_begin", "time": 0.0, "step": 1, "free_pages": 8, "plan_prefill": 3, "plan_decode": 0, "preempted": [], "planned_head": "A", "waiting": ["A", "B"], "note": "form:A"}
+{"kind": "simulated", "policy": "fcfs", "seq": 3, "event": "admit", "time": 0.0, "rids": ["A"]}
+{"kind": "simulated", "policy": "fcfs", "seq": 4, "event": "prefill_chunk", "time": 3.0, "rid": "A", "tokens": 3, "prompt_done": 3, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 5, "event": "prefill_done", "time": 3.0, "rid": "A", "pages": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 6, "event": "step_end", "time": 3.0, "step": 1, "duration": 3.0, "used_pages": 1, "internal_frag_tokens": 1, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 7, "event": "step_begin", "time": 3.0, "step": 2, "free_pages": 7, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "B", "waiting": ["B"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 8, "event": "step_end", "time": 4.0, "step": 2, "duration": 1.0, "used_pages": 1, "internal_frag_tokens": 0, "decoded": [{"rid": "A", "gen_done": 1}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 9, "event": "step_begin", "time": 4.0, "step": 3, "free_pages": 7, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "B", "waiting": ["B"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 10, "event": "completed", "time": 5.0, "rid": "A", "released_pages": 2, "prompt_done": 3, "gen_done": 2}
+{"kind": "simulated", "policy": "fcfs", "seq": 11, "event": "step_end", "time": 5.0, "step": 3, "duration": 1.0, "used_pages": 0, "internal_frag_tokens": 0, "decoded": [{"rid": "A", "gen_done": 2}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 12, "event": "step_begin", "time": 5.0, "step": 4, "free_pages": 8, "plan_prefill": 2, "plan_decode": 0, "preempted": [], "planned_head": "B", "waiting": ["B"], "note": "form:B"}
+{"kind": "simulated", "policy": "fcfs", "seq": 13, "event": "admit", "time": 5.0, "rids": ["B"]}
+{"kind": "simulated", "policy": "fcfs", "seq": 14, "event": "prefill_chunk", "time": 7.0, "rid": "B", "tokens": 2, "prompt_done": 2, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 15, "event": "prefill_done", "time": 7.0, "rid": "B", "pages": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 16, "event": "step_end", "time": 7.0, "step": 4, "duration": 2.0, "used_pages": 1, "internal_frag_tokens": 2, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 17, "event": "step_begin", "time": 7.0, "step": 5, "free_pages": 7, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": null, "waiting": [], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 18, "event": "step_end", "time": 8.0, "step": 5, "duration": 1.0, "used_pages": 1, "internal_frag_tokens": 1, "decoded": [{"rid": "B", "gen_done": 1}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 19, "event": "step_begin", "time": 8.0, "step": 6, "free_pages": 7, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": null, "waiting": [], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 20, "event": "step_end", "time": 9.0, "step": 6, "duration": 1.0, "used_pages": 1, "internal_frag_tokens": 0, "decoded": [{"rid": "B", "gen_done": 2}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 21, "event": "step_begin", "time": 9.0, "step": 7, "free_pages": 7, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": null, "waiting": [], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 22, "event": "completed", "time": 10.0, "rid": "B", "released_pages": 2, "prompt_done": 2, "gen_done": 3}
+{"kind": "simulated", "policy": "fcfs", "seq": 23, "event": "step_end", "time": 10.0, "step": 7, "duration": 1.0, "used_pages": 0, "internal_frag_tokens": 0, "decoded": [{"rid": "B", "gen_done": 3}]}

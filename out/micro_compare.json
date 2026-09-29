@@ -1,0 +1,451 @@
+{
+  "scenario": "micro",
+  "config": {
+    "page_size": 4,
+    "num_pages": 8,
+    "token_budget": 4,
+    "max_chunk": 2,
+    "cost_model": {
+      "prefill_time_per_token": 1,
+      "decode_time_per_token": 1,
+      "launch_overhead": 0.0,
+      "recompute_factor": 1.0
+    },
+    "fixed_before_comparison_and_identical_for_all_policies": true,
+    "units": "simulated time units from CostModel (NOT hardware timings)"
+  },
+  "policies": {
+    "fcfs": {
+      "summary": {
+        "label": "simulated_prediction",
+        "not_hardware_measurement": true,
+        "policy": "fcfs",
+        "requests": 2,
+        "completed": 2,
+        "cancelled": 0,
+        "rejected": 0,
+        "makespan": 10.0,
+        "busy_time": 10.0,
+        "idle_time": 0.0,
+        "steps": 7,
+        "request_throughput": 0.2,
+        "decode_token_throughput": 0.5,
+        "total_decode_tokens": 5,
+        "total_prefill_tokens_charged": 5,
+        "total_recompute_tokens": 0,
+        "mean_ttft": 6.0,
+        "mean_completion_latency": 7.5,
+        "mean_itl": 1.0,
+        "peak_pages": 2,
+        "page_pool_utilization": 0.1,
+        "mean_internal_frag_tokens": 0.8,
+        "peak_internal_frag_tokens": 2,
+        "external_fragmentation": 0,
+        "external_frag_note": "0 by design: free pages are interchangeable; only intra-page slack wastes capacity."
+      },
+      "requests": [
+        {
+          "rid": "A",
+          "status": "completed",
+          "arrival": 0,
+          "prompt_len": 3,
+          "actual_gen_len": 2,
+          "gen_done": 2,
+          "admitted_at": 0.0,
+          "prompt_latency": 3.0,
+          "ttft": 4.0,
+          "completion_latency": 5.0,
+          "itls": [
+            1.0
+          ],
+          "itl_mean": 1.0,
+          "itl_max": 1.0,
+          "decode_throughput": 1.0,
+          "preemptions": 0,
+          "recompute_tokens": 0,
+          "pages_held_at_end": 0,
+          "ttft_note": null,
+          "reject_reason": null
+        },
+        {
+          "rid": "B",
+          "status": "completed",
+          "arrival": 0,
+          "prompt_len": 2,
+          "actual_gen_len": 3,
+          "gen_done": 3,
+          "admitted_at": 5.0,
+          "prompt_latency": 7.0,
+          "ttft": 8.0,
+          "completion_latency": 10.0,
+          "itls": [
+            1.0,
+            1.0
+          ],
+          "itl_mean": 1.0,
+          "itl_max": 1.0,
+          "decode_throughput": 1.0,
+          "preemptions": 0,
+          "recompute_tokens": 0,
+          "pages_held_at_end": 0,
+          "ttft_note": null,
+          "reject_reason": null
+        }
+      ],
+      "steps": [
+        {
+          "step": 1,
+          "t_start": 0.0,
+          "t_end": 3.0,
+          "duration": 3.0,
+          "prefill_tokens": 3,
+          "decode_tokens": 0,
+          "recompute_tokens": 0,
+          "used_pages": 1,
+          "free_pages": 7,
+          "peak_pages": 1,
+          "internal_frag_tokens": 1,
+          "admitted": [
+            "A"
+          ],
+          "preempted": [],
+          "waiting_head": "B",
+          "planned_head": "A",
+          "decoded": [],
+          "finished_prefill": [
+            "A"
+          ]
+        },
+        {
+          "step": 2,
+          "t_start": 3.0,
+          "t_end": 4.0,
+          "duration": 1.0,
+          "prefill_tokens": 0,
+          "decode_tokens": 1,
+          "recompute_tokens": 0,
+          "used_pages": 1,
+          "free_pages": 7,
+          "peak_pages": 1,
+          "internal_frag_tokens": 0,
+          "admitted": [],
+          "preempted": [],
+          "waiting_head": "B",
+          "planned_head": "B",
+          "decoded": [
+            {
+              "rid": "A",
+              "gen_done": 1
+            }
+          ],
+          "finished_prefill": []
+        },
+        {
+          "step": 3,
+          "t_start": 4.0,
+          "t_end": 5.0,
+          "duration": 1.0,
+          "prefill_tokens": 0,
+          "decode_tokens": 1,
+          "recompute_tokens": 0,
+          "used_pages": 0,
+          "free_pages": 8,
+          "peak_pages": 2,
+          "internal_frag_tokens": 0,
+          "admitted": [],
+          "preempted": [],
+          "waiting_head": "B",
+          "planned_head": "B",
+          "decoded": [
+            {
+              "rid": "A",
+              "gen_done": 2
+            }
+          ],
+          "finished_prefill": []
+        },
+        {
+          "step": 4,
+          "t_start": 5.0,
+          "t_end": 7.0,
+          "duration": 2.0,
+          "prefill_tokens": 2,
+          "decode_tokens": 0,
+          "recompute_tokens": 0,
+          "used_pages": 1,
+          "free_pages": 7,
+          "peak_pages": 2,
+          "internal_frag_tokens": 2,
+          "admitted": [
+            "B"
+          ],
+          "preempted": [],
+          "waiting_head": null,
+          "planned_head": "B",
+          "decoded": [],
+          "finished_prefill": [
+            "B"
+          ]
+        },
+        {
+          "step": 5,
+          "t_start": 7.0,
+          "t_end": 8.0,
+          "duration": 1.0,
+          "prefill_tokens": 0,
+          "decode_tokens": 1,
+          "recompute_tokens": 0,
+          "used_pages": 1,
+          "free_pages": 7,
+          "peak_pages": 2,
+          "internal_frag_tokens": 1,
+          "admitted": [],
+          "preempted": [],
+          "waiting_head": null,
+          "planned_head": null,
+          "decoded": [
+            {
+              "rid": "B",
+              "gen_done": 1
+            }
+          ],
+          "finished_prefill": []
+        },
+        {
+          "step": 6,
+          "t_start": 8.0,
+          "t_end": 9.0,
+          "duration": 1.0,
+          "prefill_tokens": 0,
+          "decode_tokens": 1,
+          "recompute_tokens": 0,
+          "used_pages": 1,
+          "free_pages": 7,
+          "peak_pages": 2,
+          "internal_frag_tokens": 0,
+          "admitted": [],
+          "preempted": [],
+          "waiting_head": null,
+          "planned_head": null,
+          "decoded": [
+            {
+              "rid": "B",
+              "gen_done": 2
+            }
+          ],
+          "finished_prefill": []
+        },
+        {
+          "step": 7,
+          "t_start": 9.0,
+          "t_end": 10.0,
+          "duration": 1.0,
+          "prefill_tokens": 0,
+          "decode_tokens": 1,
+          "recompute_tokens": 0,
+          "used_pages": 0,
+          "free_pages": 8,
+          "peak_pages": 2,
+          "internal_frag_tokens": 0,
+          "admitted": [],
+          "preempted": [],
+          "waiting_head": null,
+          "planned_head": null,
+          "decoded": [
+            {
+              "rid": "B",
+              "gen_done": 3
+            }
+          ],
+          "finished_prefill": []
+        }
+      ]
+    },
+    "cb_recompute": {
+      "summary": {
+        "label": "simulated_prediction",
+        "not_hardware_measurement": true,
+        "policy": "continuous_batching+recompute",
+        "requests": 2,
+        "completed": 2,
+        "cancelled": 0,
+        "rejected": 0,
+        "makespan": 10.0,
+        "busy_time": 10.0,
+        "idle_time": 0.0,
+        "steps": 4,
+        "request_throughput": 0.2,
+        "decode_token_throughput": 0.5,
+        "total_decode_tokens": 5,
+        "total_prefill_tokens_charged": 5,
+        "total_recompute_tokens": 0,
+        "mean_ttft": 7.0,
+        "mean_completion_latency": 10.0,
+        "mean_itl": 2.0,
+        "peak_pages": 4,
+        "page_pool_utilization": 0.2,
+        "mean_internal_frag_tokens": 2.0,
+        "peak_internal_frag_tokens": 4,
+        "external_fragmentation": 0,
+        "external_frag_note": "0 by design: free pages are interchangeable; only intra-page slack wastes capacity."
+      },
+      "requests": [
+        {
+          "rid": "A",
+          "status": "completed",
+          "arrival": 0,
+          "prompt_len": 3,
+          "actual_gen_len": 2,
+          "gen_done": 2,
+          "admitted_at": 0.0,
+          "prompt_latency": 6.0,
+          "ttft": 8.0,
+          "completion_latency": 10.0,
+          "itls": [
+            2.0
+          ],
+          "itl_mean": 2.0,
+          "itl_max": 2.0,
+          "decode_throughput": 0.5,
+          "preemptions": 0,
+          "recompute_tokens": 0,
+          "pages_held_at_end": 0,
+          "ttft_note": null,
+          "reject_reason": null
+        },
+        {
+          "rid": "B",
+          "status": "completed",
+          "arrival": 0,
+          "prompt_len": 2,
+          "actual_gen_len": 3,
+          "gen_done": 3,
+          "admitted_at": 0.0,
+          "prompt_latency": 4.0,
+          "ttft": 6.0,
+          "completion_latency": 10.0,
+          "itls": [
+            2.0,
+            2.0
+          ],
+          "itl_mean": 2.0,
+          "itl_max": 2.0,
+          "decode_throughput": 0.5,
+          "preemptions": 0,
+          "recompute_tokens": 0,
+          "pages_held_at_end": 0,
+          "ttft_note": null,
+          "reject_reason": null
+        }
+      ],
+      "steps": [
+        {
+          "step": 1,
+          "t_start": 0.0,
+          "t_end": 4.0,
+          "duration": 4.0,
+          "prefill_tokens": 4,
+          "decode_tokens": 0,
+          "recompute_tokens": 0,
+          "used_pages": 2,
+          "free_pages": 6,
+          "peak_pages": 2,
+          "internal_frag_tokens": 4,
+          "admitted": [
+            "A",
+            "B"
+          ],
+          "preempted": [],
+          "waiting_head": null,
+          "planned_head": "A",
+          "decoded": [],
+          "finished_prefill": [
+            "B"
+          ]
+        },
+        {
+          "step": 2,
+          "t_start": 4.0,
+          "t_end": 6.0,
+          "duration": 2.0,
+          "prefill_tokens": 1,
+          "decode_tokens": 1,
+          "recompute_tokens": 0,
+          "used_pages": 2,
+          "free_pages": 6,
+          "peak_pages": 2,
+          "internal_frag_tokens": 2,
+          "admitted": [],
+          "preempted": [],
+          "waiting_head": null,
+          "planned_head": null,
+          "decoded": [
+            {
+              "rid": "B",
+              "gen_done": 1
+            }
+          ],
+          "finished_prefill": [
+            "A"
+          ]
+        },
+        {
+          "step": 3,
+          "t_start": 6.0,
+          "t_end": 8.0,
+          "duration": 2.0,
+          "prefill_tokens": 0,
+          "decode_tokens": 2,
+          "recompute_tokens": 0,
+          "used_pages": 2,
+          "free_pages": 6,
+          "peak_pages": 2,
+          "internal_frag_tokens": 0,
+          "admitted": [],
+          "preempted": [],
+          "waiting_head": null,
+          "planned_head": null,
+          "decoded": [
+            {
+              "rid": "A",
+              "gen_done": 1
+            },
+            {
+              "rid": "B",
+              "gen_done": 2
+            }
+          ],
+          "finished_prefill": []
+        },
+        {
+          "step": 4,
+          "t_start": 8.0,
+          "t_end": 10.0,
+          "duration": 2.0,
+          "prefill_tokens": 0,
+          "decode_tokens": 2,
+          "recompute_tokens": 0,
+          "used_pages": 0,
+          "free_pages": 8,
+          "peak_pages": 4,
+          "internal_frag_tokens": 0,
+          "admitted": [],
+          "preempted": [],
+          "waiting_head": null,
+          "planned_head": null,
+          "decoded": [
+            {
+              "rid": "A",
+              "gen_done": 2
+            },
+            {
+              "rid": "B",
+              "gen_done": 3
+            }
+          ],
+          "finished_prefill": []
+        }
+      ]
+    }
+  }
+}

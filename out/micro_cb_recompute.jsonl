@@ -1,0 +1,18 @@
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 0, "event": "arrival", "time": 0.0, "rid": "A", "prompt_len": 3}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 1, "event": "arrival", "time": 0.0, "rid": "B", "prompt_len": 2}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 2, "event": "step_begin", "time": 0.0, "step": 1, "free_pages": 8, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": "A", "waiting": ["A", "B"], "note": "head=A mode=recompute"}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 3, "event": "admit", "time": 0.0, "rids": ["A", "B"]}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 4, "event": "prefill_chunk", "time": 4.0, "rid": "A", "tokens": 2, "prompt_done": 2, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 5, "event": "prefill_chunk", "time": 4.0, "rid": "B", "tokens": 2, "prompt_done": 2, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 6, "event": "prefill_done", "time": 4.0, "rid": "B", "pages": 1}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 7, "event": "step_end", "time": 4.0, "step": 1, "duration": 4.0, "used_pages": 2, "internal_frag_tokens": 4, "decoded": []}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 8, "event": "step_begin", "time": 4.0, "step": 2, "free_pages": 6, "plan_prefill": 1, "plan_decode": 1, "preempted": [], "planned_head": null, "waiting": [], "note": "head=None mode=recompute"}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 9, "event": "prefill_chunk", "time": 6.0, "rid": "A", "tokens": 1, "prompt_done": 3, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 10, "event": "prefill_done", "time": 6.0, "rid": "A", "pages": 1}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 11, "event": "step_end", "time": 6.0, "step": 2, "duration": 2.0, "used_pages": 2, "internal_frag_tokens": 2, "decoded": [{"rid": "B", "gen_done": 1}]}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 12, "event": "step_begin", "time": 6.0, "step": 3, "free_pages": 6, "plan_prefill": 0, "plan_decode": 2, "preempted": [], "planned_head": null, "waiting": [], "note": "head=None mode=recompute"}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 13, "event": "step_end", "time": 8.0, "step": 3, "duration": 2.0, "used_pages": 2, "internal_frag_tokens": 0, "decoded": [{"rid": "A", "gen_done": 1}, {"rid": "B", "gen_done": 2}]}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 14, "event": "step_begin", "time": 8.0, "step": 4, "free_pages": 6, "plan_prefill": 0, "plan_decode": 2, "preempted": [], "planned_head": null, "waiting": [], "note": "head=None mode=recompute"}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 15, "event": "completed", "time": 10.0, "rid": "A", "released_pages": 2, "prompt_done": 3, "gen_done": 2}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 16, "event": "completed", "time": 10.0, "rid": "B", "released_pages": 2, "prompt_done": 2, "gen_done": 3}
+{"kind": "simulated", "policy": "continuous_batching+recompute", "seq": 17, "event": "step_end", "time": 10.0, "step": 4, "duration": 2.0, "used_pages": 0, "internal_frag_tokens": 0, "decoded": [{"rid": "A", "gen_done": 2}, {"rid": "B", "gen_done": 3}]}

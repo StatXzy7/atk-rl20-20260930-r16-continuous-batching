@@ -1,0 +1,169 @@
+{"kind": "simulated", "policy": "fcfs", "seq": 0, "event": "arrival", "time": 0.0, "rid": "Long", "prompt_len": 40}
+{"kind": "simulated", "policy": "fcfs", "seq": 1, "event": "step_begin", "time": 0.0, "step": 1, "free_pages": 12, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": "Long", "waiting": ["Long"], "note": "form:Long"}
+{"kind": "simulated", "policy": "fcfs", "seq": 2, "event": "admit", "time": 0.0, "rids": ["Long"]}
+{"kind": "simulated", "policy": "fcfs", "seq": 3, "event": "prefill_chunk", "time": 4.0, "rid": "Long", "tokens": 4, "prompt_done": 4, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 4, "event": "step_end", "time": 4.0, "step": 1, "duration": 4.0, "used_pages": 1, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 5, "event": "arrival", "time": 4.0, "rid": "S0", "prompt_len": 2}
+{"kind": "simulated", "policy": "fcfs", "seq": 6, "event": "arrival", "time": 4.0, "rid": "S1", "prompt_len": 3}
+{"kind": "simulated", "policy": "fcfs", "seq": 7, "event": "arrival", "time": 4.0, "rid": "S2", "prompt_len": 4}
+{"kind": "simulated", "policy": "fcfs", "seq": 8, "event": "arrival", "time": 4.0, "rid": "S3", "prompt_len": 2}
+{"kind": "simulated", "policy": "fcfs", "seq": 9, "event": "arrival", "time": 4.0, "rid": "S4", "prompt_len": 3}
+{"kind": "simulated", "policy": "fcfs", "seq": 10, "event": "arrival", "time": 4.0, "rid": "S5", "prompt_len": 4}
+{"kind": "simulated", "policy": "fcfs", "seq": 11, "event": "arrival", "time": 4.0, "rid": "S6", "prompt_len": 2}
+{"kind": "simulated", "policy": "fcfs", "seq": 12, "event": "arrival", "time": 4.0, "rid": "S7", "prompt_len": 3}
+{"kind": "simulated", "policy": "fcfs", "seq": 13, "event": "arrival", "time": 4.0, "rid": "S8", "prompt_len": 4}
+{"kind": "simulated", "policy": "fcfs", "seq": 14, "event": "arrival", "time": 4.0, "rid": "S9", "prompt_len": 2}
+{"kind": "simulated", "policy": "fcfs", "seq": 15, "event": "arrival", "time": 4.0, "rid": "S10", "prompt_len": 3}
+{"kind": "simulated", "policy": "fcfs", "seq": 16, "event": "arrival", "time": 4.0, "rid": "S11", "prompt_len": 4}
+{"kind": "simulated", "policy": "fcfs", "seq": 17, "event": "step_begin", "time": 4.0, "step": 2, "free_pages": 11, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 18, "event": "prefill_chunk", "time": 8.0, "rid": "Long", "tokens": 4, "prompt_done": 8, "pages": 2, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 19, "event": "step_end", "time": 8.0, "step": 2, "duration": 4.0, "used_pages": 2, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 20, "event": "arrival", "time": 8.0, "rid": "Huge1", "prompt_len": 30}
+{"kind": "simulated", "policy": "fcfs", "seq": 21, "event": "step_begin", "time": 8.0, "step": 3, "free_pages": 10, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 22, "event": "prefill_chunk", "time": 12.0, "rid": "Long", "tokens": 4, "prompt_done": 12, "pages": 3, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 23, "event": "cancelled", "time": 12.0, "rid": "S3", "released_pages": 0, "prompt_done": 0, "gen_done": 0}
+{"kind": "simulated", "policy": "fcfs", "seq": 24, "event": "step_end", "time": 12.0, "step": 3, "duration": 4.0, "used_pages": 3, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 25, "event": "step_begin", "time": 12.0, "step": 4, "free_pages": 9, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 26, "event": "prefill_chunk", "time": 16.0, "rid": "Long", "tokens": 4, "prompt_done": 16, "pages": 4, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 27, "event": "step_end", "time": 16.0, "step": 4, "duration": 4.0, "used_pages": 4, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 28, "event": "step_begin", "time": 16.0, "step": 5, "free_pages": 8, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 29, "event": "prefill_chunk", "time": 20.0, "rid": "Long", "tokens": 4, "prompt_done": 20, "pages": 5, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 30, "event": "step_end", "time": 20.0, "step": 5, "duration": 4.0, "used_pages": 5, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 31, "event": "step_begin", "time": 20.0, "step": 6, "free_pages": 7, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 32, "event": "prefill_chunk", "time": 24.0, "rid": "Long", "tokens": 4, "prompt_done": 24, "pages": 6, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 33, "event": "step_end", "time": 24.0, "step": 6, "duration": 4.0, "used_pages": 6, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 34, "event": "step_begin", "time": 24.0, "step": 7, "free_pages": 6, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 35, "event": "prefill_chunk", "time": 28.0, "rid": "Long", "tokens": 4, "prompt_done": 28, "pages": 7, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 36, "event": "step_end", "time": 28.0, "step": 7, "duration": 4.0, "used_pages": 7, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 37, "event": "step_begin", "time": 28.0, "step": 8, "free_pages": 5, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 38, "event": "prefill_chunk", "time": 32.0, "rid": "Long", "tokens": 4, "prompt_done": 32, "pages": 8, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 39, "event": "step_end", "time": 32.0, "step": 8, "duration": 4.0, "used_pages": 8, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 40, "event": "step_begin", "time": 32.0, "step": 9, "free_pages": 4, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 41, "event": "prefill_chunk", "time": 36.0, "rid": "Long", "tokens": 4, "prompt_done": 36, "pages": 9, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 42, "event": "step_end", "time": 36.0, "step": 9, "duration": 4.0, "used_pages": 9, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 43, "event": "step_begin", "time": 36.0, "step": 10, "free_pages": 3, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 44, "event": "prefill_chunk", "time": 40.0, "rid": "Long", "tokens": 4, "prompt_done": 40, "pages": 10, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 45, "event": "prefill_done", "time": 40.0, "rid": "Long", "pages": 10}
+{"kind": "simulated", "policy": "fcfs", "seq": 46, "event": "step_end", "time": 40.0, "step": 10, "duration": 4.0, "used_pages": 10, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 47, "event": "step_begin", "time": 40.0, "step": 11, "free_pages": 2, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 48, "event": "step_end", "time": 43.0, "step": 11, "duration": 3.0, "used_pages": 11, "internal_frag_tokens": 3, "decoded": [{"rid": "Long", "gen_done": 1}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 49, "event": "step_begin", "time": 43.0, "step": 12, "free_pages": 1, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 50, "event": "step_end", "time": 46.0, "step": 12, "duration": 3.0, "used_pages": 11, "internal_frag_tokens": 2, "decoded": [{"rid": "Long", "gen_done": 2}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 51, "event": "step_begin", "time": 46.0, "step": 13, "free_pages": 1, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 52, "event": "step_end", "time": 49.0, "step": 13, "duration": 3.0, "used_pages": 11, "internal_frag_tokens": 1, "decoded": [{"rid": "Long", "gen_done": 3}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 53, "event": "step_begin", "time": 49.0, "step": 14, "free_pages": 1, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 54, "event": "step_end", "time": 52.0, "step": 14, "duration": 3.0, "used_pages": 11, "internal_frag_tokens": 0, "decoded": [{"rid": "Long", "gen_done": 4}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 55, "event": "step_begin", "time": 52.0, "step": 15, "free_pages": 1, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 56, "event": "step_end", "time": 55.0, "step": 15, "duration": 3.0, "used_pages": 12, "internal_frag_tokens": 3, "decoded": [{"rid": "Long", "gen_done": 5}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 57, "event": "step_begin", "time": 55.0, "step": 16, "free_pages": 0, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 58, "event": "completed", "time": 58.0, "rid": "Long", "released_pages": 12, "prompt_done": 40, "gen_done": 6}
+{"kind": "simulated", "policy": "fcfs", "seq": 59, "event": "step_end", "time": 58.0, "step": 16, "duration": 3.0, "used_pages": 0, "internal_frag_tokens": 0, "decoded": [{"rid": "Long", "gen_done": 6}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 60, "event": "step_begin", "time": 58.0, "step": 17, "free_pages": 12, "plan_prefill": 5, "plan_decode": 0, "preempted": [], "planned_head": "S0", "waiting": ["S0", "S1", "S2", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "Huge1"], "note": "form:S0,S1"}
+{"kind": "simulated", "policy": "fcfs", "seq": 61, "event": "admit", "time": 58.0, "rids": ["S0", "S1"]}
+{"kind": "simulated", "policy": "fcfs", "seq": 62, "event": "prefill_chunk", "time": 63.0, "rid": "S0", "tokens": 2, "prompt_done": 2, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 63, "event": "prefill_chunk", "time": 63.0, "rid": "S1", "tokens": 3, "prompt_done": 3, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 64, "event": "prefill_done", "time": 63.0, "rid": "S0", "pages": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 65, "event": "prefill_done", "time": 63.0, "rid": "S1", "pages": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 66, "event": "cancelled", "time": 63.0, "rid": "S9", "released_pages": 0, "prompt_done": 0, "gen_done": 0}
+{"kind": "simulated", "policy": "fcfs", "seq": 67, "event": "step_end", "time": 63.0, "step": 17, "duration": 5.0, "used_pages": 2, "internal_frag_tokens": 3, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 68, "event": "step_begin", "time": 63.0, "step": 18, "free_pages": 10, "plan_prefill": 0, "plan_decode": 2, "preempted": [], "planned_head": "S2", "waiting": ["S2", "S4", "S5", "S6", "S7", "S8", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 69, "event": "completed", "time": 69.0, "rid": "S0", "released_pages": 1, "prompt_done": 2, "gen_done": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 70, "event": "step_end", "time": 69.0, "step": 18, "duration": 6.0, "used_pages": 1, "internal_frag_tokens": 0, "decoded": [{"rid": "S0", "gen_done": 1}, {"rid": "S1", "gen_done": 1}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 71, "event": "step_begin", "time": 69.0, "step": 19, "free_pages": 11, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "S2", "waiting": ["S2", "S4", "S5", "S6", "S7", "S8", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 72, "event": "completed", "time": 72.0, "rid": "S1", "released_pages": 2, "prompt_done": 3, "gen_done": 2}
+{"kind": "simulated", "policy": "fcfs", "seq": 73, "event": "step_end", "time": 72.0, "step": 19, "duration": 3.0, "used_pages": 0, "internal_frag_tokens": 0, "decoded": [{"rid": "S1", "gen_done": 2}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 74, "event": "step_begin", "time": 72.0, "step": 20, "free_pages": 12, "plan_prefill": 7, "plan_decode": 0, "preempted": [], "planned_head": "S2", "waiting": ["S2", "S4", "S5", "S6", "S7", "S8", "S10", "S11", "Huge1"], "note": "form:S2,S4"}
+{"kind": "simulated", "policy": "fcfs", "seq": 75, "event": "admit", "time": 72.0, "rids": ["S2", "S4"]}
+{"kind": "simulated", "policy": "fcfs", "seq": 76, "event": "prefill_chunk", "time": 79.0, "rid": "S2", "tokens": 4, "prompt_done": 4, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 77, "event": "prefill_chunk", "time": 79.0, "rid": "S4", "tokens": 3, "prompt_done": 3, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 78, "event": "prefill_done", "time": 79.0, "rid": "S2", "pages": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 79, "event": "prefill_done", "time": 79.0, "rid": "S4", "pages": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 80, "event": "step_end", "time": 79.0, "step": 20, "duration": 7.0, "used_pages": 2, "internal_frag_tokens": 1, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 81, "event": "step_begin", "time": 79.0, "step": 21, "free_pages": 10, "plan_prefill": 0, "plan_decode": 2, "preempted": [], "planned_head": "S5", "waiting": ["S5", "S6", "S7", "S8", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 82, "event": "completed", "time": 85.0, "rid": "S4", "released_pages": 1, "prompt_done": 3, "gen_done": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 83, "event": "step_end", "time": 85.0, "step": 21, "duration": 6.0, "used_pages": 2, "internal_frag_tokens": 3, "decoded": [{"rid": "S2", "gen_done": 1}, {"rid": "S4", "gen_done": 1}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 84, "event": "step_begin", "time": 85.0, "step": 22, "free_pages": 10, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "S5", "waiting": ["S5", "S6", "S7", "S8", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 85, "event": "step_end", "time": 88.0, "step": 22, "duration": 3.0, "used_pages": 2, "internal_frag_tokens": 2, "decoded": [{"rid": "S2", "gen_done": 2}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 86, "event": "step_begin", "time": 88.0, "step": 23, "free_pages": 10, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "S5", "waiting": ["S5", "S6", "S7", "S8", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 87, "event": "completed", "time": 91.0, "rid": "S2", "released_pages": 2, "prompt_done": 4, "gen_done": 3}
+{"kind": "simulated", "policy": "fcfs", "seq": 88, "event": "step_end", "time": 91.0, "step": 23, "duration": 3.0, "used_pages": 0, "internal_frag_tokens": 0, "decoded": [{"rid": "S2", "gen_done": 3}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 89, "event": "step_begin", "time": 91.0, "step": 24, "free_pages": 12, "plan_prefill": 6, "plan_decode": 0, "preempted": [], "planned_head": "S5", "waiting": ["S5", "S6", "S7", "S8", "S10", "S11", "Huge1"], "note": "form:S5,S6"}
+{"kind": "simulated", "policy": "fcfs", "seq": 90, "event": "admit", "time": 91.0, "rids": ["S5", "S6"]}
+{"kind": "simulated", "policy": "fcfs", "seq": 91, "event": "prefill_chunk", "time": 97.0, "rid": "S5", "tokens": 4, "prompt_done": 4, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 92, "event": "prefill_chunk", "time": 97.0, "rid": "S6", "tokens": 2, "prompt_done": 2, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 93, "event": "prefill_done", "time": 97.0, "rid": "S5", "pages": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 94, "event": "prefill_done", "time": 97.0, "rid": "S6", "pages": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 95, "event": "step_end", "time": 97.0, "step": 24, "duration": 6.0, "used_pages": 2, "internal_frag_tokens": 2, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 96, "event": "step_begin", "time": 97.0, "step": 25, "free_pages": 10, "plan_prefill": 0, "plan_decode": 2, "preempted": [], "planned_head": "S7", "waiting": ["S7", "S8", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 97, "event": "step_end", "time": 103.0, "step": 25, "duration": 6.0, "used_pages": 3, "internal_frag_tokens": 4, "decoded": [{"rid": "S5", "gen_done": 1}, {"rid": "S6", "gen_done": 1}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 98, "event": "step_begin", "time": 103.0, "step": 26, "free_pages": 9, "plan_prefill": 0, "plan_decode": 2, "preempted": [], "planned_head": "S7", "waiting": ["S7", "S8", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 99, "event": "completed", "time": 109.0, "rid": "S5", "released_pages": 2, "prompt_done": 4, "gen_done": 2}
+{"kind": "simulated", "policy": "fcfs", "seq": 100, "event": "step_end", "time": 109.0, "step": 26, "duration": 6.0, "used_pages": 1, "internal_frag_tokens": 0, "decoded": [{"rid": "S5", "gen_done": 2}, {"rid": "S6", "gen_done": 2}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 101, "event": "step_begin", "time": 109.0, "step": 27, "free_pages": 11, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "S7", "waiting": ["S7", "S8", "S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 102, "event": "completed", "time": 112.0, "rid": "S6", "released_pages": 2, "prompt_done": 2, "gen_done": 3}
+{"kind": "simulated", "policy": "fcfs", "seq": 103, "event": "step_end", "time": 112.0, "step": 27, "duration": 3.0, "used_pages": 0, "internal_frag_tokens": 0, "decoded": [{"rid": "S6", "gen_done": 3}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 104, "event": "step_begin", "time": 112.0, "step": 28, "free_pages": 12, "plan_prefill": 7, "plan_decode": 0, "preempted": [], "planned_head": "S7", "waiting": ["S7", "S8", "S10", "S11", "Huge1"], "note": "form:S7,S8"}
+{"kind": "simulated", "policy": "fcfs", "seq": 105, "event": "admit", "time": 112.0, "rids": ["S7", "S8"]}
+{"kind": "simulated", "policy": "fcfs", "seq": 106, "event": "prefill_chunk", "time": 119.0, "rid": "S7", "tokens": 3, "prompt_done": 3, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 107, "event": "prefill_chunk", "time": 119.0, "rid": "S8", "tokens": 4, "prompt_done": 4, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 108, "event": "prefill_done", "time": 119.0, "rid": "S7", "pages": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 109, "event": "prefill_done", "time": 119.0, "rid": "S8", "pages": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 110, "event": "step_end", "time": 119.0, "step": 28, "duration": 7.0, "used_pages": 2, "internal_frag_tokens": 1, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 111, "event": "step_begin", "time": 119.0, "step": 29, "free_pages": 10, "plan_prefill": 0, "plan_decode": 2, "preempted": [], "planned_head": "S10", "waiting": ["S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 112, "event": "completed", "time": 125.0, "rid": "S8", "released_pages": 2, "prompt_done": 4, "gen_done": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 113, "event": "step_end", "time": 125.0, "step": 29, "duration": 6.0, "used_pages": 1, "internal_frag_tokens": 0, "decoded": [{"rid": "S7", "gen_done": 1}, {"rid": "S8", "gen_done": 1}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 114, "event": "step_begin", "time": 125.0, "step": 30, "free_pages": 11, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "S10", "waiting": ["S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 115, "event": "step_end", "time": 128.0, "step": 30, "duration": 3.0, "used_pages": 2, "internal_frag_tokens": 3, "decoded": [{"rid": "S7", "gen_done": 2}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 116, "event": "step_begin", "time": 128.0, "step": 31, "free_pages": 10, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "S10", "waiting": ["S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 117, "event": "step_end", "time": 131.0, "step": 31, "duration": 3.0, "used_pages": 2, "internal_frag_tokens": 2, "decoded": [{"rid": "S7", "gen_done": 3}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 118, "event": "step_begin", "time": 131.0, "step": 32, "free_pages": 10, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "S10", "waiting": ["S10", "S11", "Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 119, "event": "completed", "time": 134.0, "rid": "S7", "released_pages": 2, "prompt_done": 3, "gen_done": 4}
+{"kind": "simulated", "policy": "fcfs", "seq": 120, "event": "step_end", "time": 134.0, "step": 32, "duration": 3.0, "used_pages": 0, "internal_frag_tokens": 0, "decoded": [{"rid": "S7", "gen_done": 4}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 121, "event": "step_begin", "time": 134.0, "step": 33, "free_pages": 12, "plan_prefill": 7, "plan_decode": 0, "preempted": [], "planned_head": "S10", "waiting": ["S10", "S11", "Huge1"], "note": "form:S10,S11"}
+{"kind": "simulated", "policy": "fcfs", "seq": 122, "event": "admit", "time": 134.0, "rids": ["S10", "S11"]}
+{"kind": "simulated", "policy": "fcfs", "seq": 123, "event": "prefill_chunk", "time": 141.0, "rid": "S10", "tokens": 3, "prompt_done": 3, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 124, "event": "prefill_chunk", "time": 141.0, "rid": "S11", "tokens": 4, "prompt_done": 4, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 125, "event": "prefill_done", "time": 141.0, "rid": "S10", "pages": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 126, "event": "prefill_done", "time": 141.0, "rid": "S11", "pages": 1}
+{"kind": "simulated", "policy": "fcfs", "seq": 127, "event": "step_end", "time": 141.0, "step": 33, "duration": 7.0, "used_pages": 2, "internal_frag_tokens": 1, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 128, "event": "step_begin", "time": 141.0, "step": 34, "free_pages": 10, "plan_prefill": 0, "plan_decode": 2, "preempted": [], "planned_head": "Huge1", "waiting": ["Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 129, "event": "step_end", "time": 147.0, "step": 34, "duration": 6.0, "used_pages": 3, "internal_frag_tokens": 3, "decoded": [{"rid": "S10", "gen_done": 1}, {"rid": "S11", "gen_done": 1}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 130, "event": "step_begin", "time": 147.0, "step": 35, "free_pages": 9, "plan_prefill": 0, "plan_decode": 2, "preempted": [], "planned_head": "Huge1", "waiting": ["Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 131, "event": "step_end", "time": 153.0, "step": 35, "duration": 6.0, "used_pages": 4, "internal_frag_tokens": 5, "decoded": [{"rid": "S10", "gen_done": 2}, {"rid": "S11", "gen_done": 2}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 132, "event": "step_begin", "time": 153.0, "step": 36, "free_pages": 8, "plan_prefill": 0, "plan_decode": 2, "preempted": [], "planned_head": "Huge1", "waiting": ["Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 133, "event": "completed", "time": 159.0, "rid": "S10", "released_pages": 2, "prompt_done": 3, "gen_done": 3}
+{"kind": "simulated", "policy": "fcfs", "seq": 134, "event": "step_end", "time": 159.0, "step": 36, "duration": 6.0, "used_pages": 2, "internal_frag_tokens": 1, "decoded": [{"rid": "S10", "gen_done": 3}, {"rid": "S11", "gen_done": 3}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 135, "event": "step_begin", "time": 159.0, "step": 37, "free_pages": 10, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": "Huge1", "waiting": ["Huge1"], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 136, "event": "completed", "time": 162.0, "rid": "S11", "released_pages": 2, "prompt_done": 4, "gen_done": 4}
+{"kind": "simulated", "policy": "fcfs", "seq": 137, "event": "step_end", "time": 162.0, "step": 37, "duration": 3.0, "used_pages": 0, "internal_frag_tokens": 0, "decoded": [{"rid": "S11", "gen_done": 4}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 138, "event": "step_begin", "time": 162.0, "step": 38, "free_pages": 12, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": "Huge1", "waiting": ["Huge1"], "note": "form:Huge1"}
+{"kind": "simulated", "policy": "fcfs", "seq": 139, "event": "admit", "time": 162.0, "rids": ["Huge1"]}
+{"kind": "simulated", "policy": "fcfs", "seq": 140, "event": "prefill_chunk", "time": 166.0, "rid": "Huge1", "tokens": 4, "prompt_done": 4, "pages": 1, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 141, "event": "step_end", "time": 166.0, "step": 38, "duration": 4.0, "used_pages": 1, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 142, "event": "step_begin", "time": 166.0, "step": 39, "free_pages": 11, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": null, "waiting": [], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 143, "event": "prefill_chunk", "time": 170.0, "rid": "Huge1", "tokens": 4, "prompt_done": 8, "pages": 2, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 144, "event": "step_end", "time": 170.0, "step": 39, "duration": 4.0, "used_pages": 2, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 145, "event": "step_begin", "time": 170.0, "step": 40, "free_pages": 10, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": null, "waiting": [], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 146, "event": "prefill_chunk", "time": 174.0, "rid": "Huge1", "tokens": 4, "prompt_done": 12, "pages": 3, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 147, "event": "step_end", "time": 174.0, "step": 40, "duration": 4.0, "used_pages": 3, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 148, "event": "step_begin", "time": 174.0, "step": 41, "free_pages": 9, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": null, "waiting": [], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 149, "event": "prefill_chunk", "time": 178.0, "rid": "Huge1", "tokens": 4, "prompt_done": 16, "pages": 4, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 150, "event": "step_end", "time": 178.0, "step": 41, "duration": 4.0, "used_pages": 4, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 151, "event": "step_begin", "time": 178.0, "step": 42, "free_pages": 8, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": null, "waiting": [], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 152, "event": "prefill_chunk", "time": 182.0, "rid": "Huge1", "tokens": 4, "prompt_done": 20, "pages": 5, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 153, "event": "step_end", "time": 182.0, "step": 42, "duration": 4.0, "used_pages": 5, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 154, "event": "step_begin", "time": 182.0, "step": 43, "free_pages": 7, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": null, "waiting": [], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 155, "event": "prefill_chunk", "time": 186.0, "rid": "Huge1", "tokens": 4, "prompt_done": 24, "pages": 6, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 156, "event": "step_end", "time": 186.0, "step": 43, "duration": 4.0, "used_pages": 6, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 157, "event": "step_begin", "time": 186.0, "step": 44, "free_pages": 6, "plan_prefill": 4, "plan_decode": 0, "preempted": [], "planned_head": null, "waiting": [], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 158, "event": "prefill_chunk", "time": 190.0, "rid": "Huge1", "tokens": 4, "prompt_done": 28, "pages": 7, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 159, "event": "step_end", "time": 190.0, "step": 44, "duration": 4.0, "used_pages": 7, "internal_frag_tokens": 0, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 160, "event": "step_begin", "time": 190.0, "step": 45, "free_pages": 5, "plan_prefill": 2, "plan_decode": 0, "preempted": [], "planned_head": null, "waiting": [], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 161, "event": "prefill_chunk", "time": 192.0, "rid": "Huge1", "tokens": 2, "prompt_done": 30, "pages": 8, "recompute": false}
+{"kind": "simulated", "policy": "fcfs", "seq": 162, "event": "prefill_done", "time": 192.0, "rid": "Huge1", "pages": 8}
+{"kind": "simulated", "policy": "fcfs", "seq": 163, "event": "step_end", "time": 192.0, "step": 45, "duration": 2.0, "used_pages": 8, "internal_frag_tokens": 2, "decoded": []}
+{"kind": "simulated", "policy": "fcfs", "seq": 164, "event": "step_begin", "time": 192.0, "step": 46, "free_pages": 4, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": null, "waiting": [], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 165, "event": "step_end", "time": 195.0, "step": 46, "duration": 3.0, "used_pages": 8, "internal_frag_tokens": 1, "decoded": [{"rid": "Huge1", "gen_done": 1}]}
+{"kind": "simulated", "policy": "fcfs", "seq": 166, "event": "step_begin", "time": 195.0, "step": 47, "free_pages": 4, "plan_prefill": 0, "plan_decode": 1, "preempted": [], "planned_head": null, "waiting": [], "note": ""}
+{"kind": "simulated", "policy": "fcfs", "seq": 167, "event": "completed", "time": 198.0, "rid": "Huge1", "released_pages": 8, "prompt_done": 30, "gen_done": 2}
+{"kind": "simulated", "policy": "fcfs", "seq": 168, "event": "step_end", "time": 198.0, "step": 47, "duration": 3.0, "used_pages": 0, "internal_frag_tokens": 0, "decoded": [{"rid": "Huge1", "gen_done": 2}]}
